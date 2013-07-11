@@ -61,7 +61,8 @@ Best Practices Resources
 
 * http://lincolnloop.com/django-best-practices/
 * https://django.2scoops.org/ (Possibly)
-* `PEP 8 <http://www.python.org/dev/peps/pep-0008/>`, `PEP 257 <http://www.python.org/dev/peps/pep-0257/>`
+* `PEP 8 <http://www.python.org/dev/peps/pep-0008/>`_, 
+  `PEP 257 <http://www.python.org/dev/peps/pep-0257/>`_
 * http://easy-readers.net/books/adaptive-web-design/
 
 =====================
