@@ -14,8 +14,8 @@ Features
 Planned
 -------
 
-  * Incorporates Django Best Practices
-  * Integrated CMS
+* Incorporates Django Best Practices
+* Integrated CMS
 
 -----------
 Implemented
