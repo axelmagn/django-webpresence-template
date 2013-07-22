@@ -1,4 +1,5 @@
 # Django settings for project_name project.
+from os import environ
 from os.path import abspath, basename, dirname, join, normpath
 from sys import path
 
@@ -22,7 +23,7 @@ path.append(DJANGO_ROOT)
 
 
 
-DEBUG = True
+DEBUG = (environ.get("DJANGO_DEBUG") in ("1", "True", "true"))
 TEMPLATE_DEBUG = DEBUG
 
 # Parse database configuration from $DATABASE_URL
@@ -45,7 +46,7 @@ ALLOWED_HOSTS = []
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/Boise'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -129,7 +130,7 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
-INSTALLED_APPS = (
+DJANGO_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -141,6 +142,16 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+THIRD_PARTY_APPS = (
+        'south',
+)
+
+# CMS_APPS = ()
+
+# LOCAL_APPS = ()
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
