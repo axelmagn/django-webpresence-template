@@ -1,0 +1,28 @@
+Axel Magnuson @axelmagn
+-------------------------------------------------------------------------------
+Django Twoscoops Project Template
+-------------------------------------------------------------------------------
+
+I have liberally used pieces of the template located here:
+https://github.com/axelmagn/django-twoscoops-project/tree/develop/project_name/project_name/settings
+
+It's based on the very fine book Two Scoops of Django by Audrey Roy and Daniel 
+Greenfield
+
+Audrey Roy / @audreyr
+Daniel Greenfeld / @pydanny
+Juan Riaza
+Faris Chebib
+Garry Polley
+@desimone
+Chris Hasenpflug
+Si Feng
+@ducky427
+Benjamin Montgomery
+@mozillazg
+Patti Chen / @pattichen
+Bouke Haarsma / @bouke
+Remco Wendt / @shanx
+Kit La Touche / @wlonk
+Erik Romijn / @erikr
+Pratyush Mittal / @pratyushmittal
