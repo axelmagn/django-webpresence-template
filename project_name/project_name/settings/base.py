@@ -78,12 +78,12 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = normpath(join(SITE_ROOT, 'media'))
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -121,24 +121,47 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.doc.XViewMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.request',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'cms.context_processors.media',
+    'sekizai.context_processors.sekizai',
 )
 
 ROOT_URLCONF = 'project_name.urls'
+
+CMS_TEMPLATES = (
+    ('base.html', 'Base Template'),
+)
+
+LANGUAGES = [
+    ('en', 'English'),
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'project_name.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    normpath(join(SITE_ROOT, 'templates')),
+)
+
+PRELOAD_APPS = (
+    'grappelli',
 )
 
 DJANGO_APPS = (
@@ -154,15 +177,32 @@ DJANGO_APPS = (
 
 THIRD_PARTY_APPS = (
     'south',
+    'mptt',
+    'menus',
+    'sekizai',
+    'filer',
+    'reversion',
 )
 
 CMS_APPS = (
+    'cms',
+    'cms.plugins.text',
+    'cms.plugins.twitter',
+    'cms.plugins.picture',
+    'cms.plugins.link',
+    'cmsplugin_filer_file',
+    'cmsplugin_filer_folder',
+    'cmsplugin_filer_image',
+    'cmsplugin_filer_teaser',
+    'cmsplugin_filer_video',
+
+
 )
 
 LOCAL_APPS = (
 )
 
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + CMS_APPS + LOCAL_APPS
+INSTALLED_APPS = PRELOAD_APPS + DJANGO_APPS + THIRD_PARTY_APPS + CMS_APPS + LOCAL_APPS
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
