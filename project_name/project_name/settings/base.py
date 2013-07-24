@@ -5,6 +5,17 @@ from sys import path
 
 import dj_database_url
 
+# Normally you should not import ANYTHING from Django directly
+# into your settings, but ImproperlyConfigured is an exception.
+from django.core.exceptions import ImproperlyConfigured
+
+def get_env_setting(setting):
+    """ Get the environment setting or return exception """
+    try:
+        return environ[setting]
+    except KeyError:
+        error_msg = "Set the %s env variable" % setting
+        raise ImproperlyConfigured(error_msg)
 
 ########## PATH CONFIGURATION
 # Absolute filesystem path to the Django project directory:
@@ -23,7 +34,7 @@ path.append(DJANGO_ROOT)
 
 
 
-DEBUG = (environ.get("DJANGO_DEBUG") in ("1", "True", "true"))
+DEBUG = (environ.get("DEBUG", '0') in ("1", "True", "true"))
 TEMPLATE_DEBUG = DEBUG
 
 # Parse database configuration from $DATABASE_URL
@@ -99,8 +110,10 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'sf8+8$v(5uqcngh&amp;&amp;(y7-aps893&amp;__f!+n^80^k+d_w^@n%-f+'
+########## SECRET CONFIGURATION
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
+SECRET_KEY = get_env_setting('SECRET_KEY')
+########## END SECRET CONFIGURATION
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -137,21 +150,21 @@ DJANGO_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admin',
+    'django.contrib.admindocs',
 )
 
 THIRD_PARTY_APPS = (
-        'south',
+    'south',
 )
 
-# CMS_APPS = ()
+CMS_APPS = (
+)
 
-# LOCAL_APPS = ()
+LOCAL_APPS = (
+)
 
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + CMS_APPS + LOCAL_APPS
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
