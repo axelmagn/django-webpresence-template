@@ -43,3 +43,6 @@ nosetests.xml
 # Virtualenv 
 venv
 .venv
+
+# compiled assets
+assets
