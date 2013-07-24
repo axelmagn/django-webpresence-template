@@ -1,8 +1,10 @@
 -r base.txt
--r test.txt
-
 ipython==0.13.2
 readline==6.2.4.1
 
 django-debug-toolbar==0.9.4
 Sphinx==1.2b1
+
+# Test packages repeated due to dumb dependency resolution
+coverage==3.6
+django-discover-runner==0.4
