@@ -152,6 +152,7 @@ CMS_TEMPLATES = (
 
 LANGUAGES = [
     ('en', 'English'),
+]
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'project_name.wsgi.application'
