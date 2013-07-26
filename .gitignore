@@ -46,3 +46,6 @@ venv
 
 # compiled assets
 assets
+
+# shortcut to installed packages
+site-packages

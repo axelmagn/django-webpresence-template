@@ -162,7 +162,7 @@ TEMPLATE_DIRS = (
 )
 
 PRELOAD_APPS = (
-    'grappelli',
+    # 'grappelli',
 )
 
 DJANGO_APPS = (
@@ -203,7 +203,8 @@ CMS_APPS = (
 LOCAL_APPS = (
 )
 
-INSTALLED_APPS = PRELOAD_APPS + DJANGO_APPS + THIRD_PARTY_APPS + CMS_APPS + LOCAL_APPS
+INSTALLED_APPS = (PRELOAD_APPS + DJANGO_APPS + THIRD_PARTY_APPS + CMS_APPS
+                  + LOCAL_APPS)
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
