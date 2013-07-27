@@ -40,6 +40,20 @@ Tells your app what database to consume with package dj-database-url. Maps to
 If you are deploying to heroku, this variable will already be set. Heroku will
 also expect your app to use Postgres as your DB, as will this template.
 
+ADMIN_NAME
+----------
+
+Maps to ``settings.ADMINS[0][0]``.::
+    
+    export ADMIN_NAME="Your Name"
+
+ADMIN_EMAIL
+-----------
+
+Maps to ``settings.ADMINS[0][1]``.::
+
+    export ADMIN_EMAIL=your_email@example.com
+
 SECRET_KEY
 ----------
 

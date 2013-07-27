@@ -45,12 +45,14 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
+    (get_env_setting('ADMIN_NAME'), get_env_setting('ADMIN_EMAIL')),
 )
 
 MANAGERS = ADMINS
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts
+# This is overridden in settings/production.py
 ALLOWED_HOSTS = ['*']
 
 # Local time zone for this installation. Choices can be found here:
@@ -183,6 +185,7 @@ THIRD_PARTY_APPS = (
     'sekizai',
     'filer',
     'reversion',
+    'easy_thumbnails',
 )
 
 CMS_APPS = (
@@ -237,3 +240,11 @@ LOGGING = {
         },
     }
 }
+
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    #'easy_thumbnails.processors.scale_and_crop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters',
+)
