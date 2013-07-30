@@ -22,8 +22,10 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project_name.settings.base")
 # setting points here.
 from django.core.wsgi import get_wsgi_application
 from dj_static import Cling, MediaCling
-application = Cling(MediaCling(get_wsgi_application()))
+from lib.anycling import AnyCling
+from django.conf import settings
 
+application = Cling(MediaCling(get_wsgi_application()))
 # Apply WSGI middleware here.
 # from helloworld.wsgi import HelloWorldApplication
 # application = HelloWorldApplication(application)

@@ -1,5 +1,8 @@
 django-toolbelt==0.0.1
--e git+https://github.com/kennethreitz/dj-static.git#egg=dj_static  #temporary until they update their pip repo
+
+#temporary until they update their pip repo
+https://github.com/axelmagn/dj-static/zipball/cbb50719a7540ec1d79ed93bd9a2cc6c9e0159f5/
+
 South==0.8.1
 django-mptt-admin==0.1.3
 django-grappelli==2.4.5
