@@ -6,6 +6,7 @@ https://github.com/axelmagn/dj-static/zipball/cbb50719a7540ec1d79ed93bd9a2cc6c9e
 South==0.8.1
 django-mptt-admin==0.1.3
 django-grappelli==2.4.5
+django-crispy-forms==1.3.2
 
 # CMS Requirements
 django-cms==2.4.2

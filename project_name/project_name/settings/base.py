@@ -158,6 +158,10 @@ CMS_TEMPLATES = (
     ('base.html', 'Base Template'),
 )
 
+CMS_SEO_FIELDS = True
+
+CRISPY_TEMPLATE_PACK = 'bootstrap'
+
 # override message tags to work with bootstrap
 MESSAGE_TAGS = {
         message_constants.DEBUG: 'alert-info',
@@ -204,6 +208,7 @@ THIRD_PARTY_APPS = (
     'easy_thumbnails',
     'tagging',
     'zinnia',
+    'crispy_forms',
 )
 
 CMS_APPS = (
