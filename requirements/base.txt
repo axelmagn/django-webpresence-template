@@ -19,4 +19,14 @@ django-filer==0.9.5
 
 # CMS Plugins
 cmsplugin-filer==0.9.5
+cmsplugin_zinnia==0.4
 django-reversion==1.7.1
+
+# Blog
+django-blog-zinnia==0.12.3
+beautifulsoup4==4.2.1
+django-tagging==0.3.1
+pytz
+pyparsing==1.5.7
+django-xmlrpc==0.1.5
+

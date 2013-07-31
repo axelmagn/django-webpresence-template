@@ -138,12 +138,14 @@ MIDDLEWARE_CLASSES = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
+    'django.contrib.messages.context_processors.messages'
     'django.core.context_processors.i18n',
     'django.core.context_processors.request',
     'django.core.context_processors.media',
     'django.core.context_processors.static',
     'cms.context_processors.media',
     'sekizai.context_processors.sekizai',
+    'zinnia.context_processors.version',
 )
 
 ROOT_URLCONF = 'project_name.urls'
@@ -151,6 +153,14 @@ ROOT_URLCONF = 'project_name.urls'
 CMS_TEMPLATES = (
     ('base.html', 'Base Template'),
 )
+
+MESSAGE_TAGS =  {
+        messages.DEBUG: 'alert-info',
+        messages.INFO: 'alert-info',
+        messages.SUCCESS: 'alert-success',
+        messages.WARNING: None, # bootstrap default alert color is suitable
+        messages.ERROR: 'alert-danger',
+}
 
 LANGUAGES = [
     ('en', 'English'),
@@ -176,6 +186,7 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'django.contrib.comments',
 )
 
 THIRD_PARTY_APPS = (
@@ -186,6 +197,8 @@ THIRD_PARTY_APPS = (
     'filer',
     'reversion',
     'easy_thumbnails',
+    'tagging',
+    'zinnia',
 )
 
 CMS_APPS = (
@@ -199,6 +212,7 @@ CMS_APPS = (
     'cmsplugin_filer_image',
     'cmsplugin_filer_teaser',
     'cmsplugin_filer_video',
+    'cmsplugin_zinnia',
 
 
 )

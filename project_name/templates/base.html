@@ -83,6 +83,17 @@
         </div>
         {% endblock %}
 
+        {% block messages %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert{% if message.tags %}{{ message.tags }}{% endif %}">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {% message %}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endblock %}
+
         {% block base_content %}
         <div class="container">
 
