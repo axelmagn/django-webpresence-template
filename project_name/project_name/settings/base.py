@@ -3,11 +3,15 @@ from os import environ
 from os.path import abspath, basename, dirname, join, normpath
 from sys import path
 
-import dj_database_url
-
 # Normally you should not import ANYTHING from Django directly
 # into your settings, but ImproperlyConfigured is an exception.
 from django.core.exceptions import ImproperlyConfigured
+# constants used for config are another exception. see:
+# https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-MESSAGE_TAGS
+from django.contrib.messages import constants as message_constants
+
+import dj_database_url
+
 
 def get_env_setting(setting):
     """ Get the environment setting or return exception """
@@ -138,7 +142,7 @@ MIDDLEWARE_CLASSES = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
-    'django.contrib.messages.context_processors.messages'
+    'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.i18n',
     'django.core.context_processors.request',
     'django.core.context_processors.media',
@@ -154,12 +158,13 @@ CMS_TEMPLATES = (
     ('base.html', 'Base Template'),
 )
 
-MESSAGE_TAGS =  {
-        messages.DEBUG: 'alert-info',
-        messages.INFO: 'alert-info',
-        messages.SUCCESS: 'alert-success',
-        messages.WARNING: None, # bootstrap default alert color is suitable
-        messages.ERROR: 'alert-danger',
+# override message tags to work with bootstrap
+MESSAGE_TAGS = {
+        message_constants.DEBUG: 'alert-info',
+        message_constants.INFO: 'alert-info',
+        message_constants.SUCCESS: 'alert-success',
+        message_constants.WARNING: None, # bootstrap default alert color is suitable
+        message_constants.ERROR: 'alert-danger',
 }
 
 LANGUAGES = [
