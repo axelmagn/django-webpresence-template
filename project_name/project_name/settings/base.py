@@ -1,4 +1,4 @@
-# Django settings for project_name project.
+# Django settings for {{ project_name }} project.
 from os import environ
 from os.path import abspath, basename, dirname, join, normpath
 from sys import path
@@ -152,7 +152,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'zinnia.context_processors.version',
 )
 
-ROOT_URLCONF = 'project_name.urls'
+ROOT_URLCONF = '{{ project_name }}.urls'
 
 CMS_TEMPLATES = (
     ('base.html', 'Base Template'),
@@ -176,7 +176,7 @@ LANGUAGES = [
 ]
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'project_name.wsgi.application'
+WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 
 TEMPLATE_DIRS = (
     normpath(join(SITE_ROOT, 'templates')),
