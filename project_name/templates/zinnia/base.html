@@ -1,86 +1,86 @@
-{% extends "zinnia/skeleton.html" %}
-{% load zinnia_tags i18n %}
-{% load url from future %}
+{% templatetag openblock %} extends "zinnia/skeleton.html" {% templatetag closeblock %}
+{% templatetag openblock %} load zinnia_tags i18n {% templatetag closeblock %}
+{% templatetag openblock %} load url from future {% templatetag closeblock %}
 
-{% block meta-keywords %}{% get_tags as entry_tags %}{{ entry_tags|join:", "}}{% endblock %}
+{% templatetag openblock %} block meta-keywords {% templatetag closeblock %}{% templatetag openblock %} get_tags as entry_tags {% templatetag closeblock %}{{ entry_tags|join:", "}}{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% block meta %}
+{% templatetag openblock %} block meta {% templatetag closeblock %}
     <meta name="generator" content="Zinnia {{ ZINNIA_VERSION }}" />
-{% endblock %}
+{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% block link %}
-    <link rel="index" href="{% url 'zinnia_entry_archive_index' %}" />
-    <link rel="author" type="text/plain" href="{% url 'zinnia_humans' %}" />
-    <link rel="EditURI" type="application/rsd+xml" href="{% url 'zinnia_rsd' %}" />
-    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="{% url 'zinnia_wlwmanifest' %}" />
-    <link rel="search" type="application/opensearchdescription+xml" title="Zinnia's Blog" href="{% url 'zinnia_opensearch' %}" />
-    <link rel="alternate" type="application/rss+xml" title="{% trans "RSS Feed of latest entries" %}" href="{% url 'zinnia_entry_latest_feed' %}" />
-    <link rel="alternate" type="application/rss+xml" title="{% trans "RSS Feed of latest discussions" %}" href="{% url 'zinnia_discussion_latest_feed' %}" />
-    {% get_archives_entries "zinnia/tags/archives_entries_link.html" %}
-{% endblock %}
+{% templatetag openblock %} block link {% templatetag closeblock %}
+    <link rel="index" href="{% templatetag openblock %} url 'zinnia_entry_archive_index' {% templatetag closeblock %}" />
+    <link rel="author" type="text/plain" href="{% templatetag openblock %} url 'zinnia_humans' {% templatetag closeblock %}" />
+    <link rel="EditURI" type="application/rsd+xml" href="{% templatetag openblock %} url 'zinnia_rsd' {% templatetag closeblock %}" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="{% templatetag openblock %} url 'zinnia_wlwmanifest' {% templatetag closeblock %}" />
+    <link rel="search" type="application/opensearchdescription+xml" title="Zinnia's Blog" href="{% templatetag openblock %} url 'zinnia_opensearch' {% templatetag closeblock %}" />
+    <link rel="alternate" type="application/rss+xml" title="{% templatetag openblock %} trans "RSS Feed of latest entries" {% templatetag closeblock %}" href="{% templatetag openblock %} url 'zinnia_entry_latest_feed' {% templatetag closeblock %}" />
+    <link rel="alternate" type="application/rss+xml" title="{% templatetag openblock %} trans "RSS Feed of latest discussions" {% templatetag closeblock %}" href="{% templatetag openblock %} url 'zinnia_discussion_latest_feed' {% templatetag closeblock %}" />
+    {% templatetag openblock %} get_archives_entries "zinnia/tags/archives_entries_link.html" {% templatetag closeblock %}
+{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% block breadcrumbs %}
-  {% zinnia_breadcrumbs %}
-{% endblock %}
+{% templatetag openblock %} block breadcrumbs {% templatetag closeblock %}
+  {% templatetag openblock %} zinnia_breadcrumbs {% templatetag closeblock %}
+{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% block sidebar %}
+{% templatetag openblock %} block sidebar {% templatetag closeblock %}
 <aside id="widget-categories" class="widget">
-  <h3>{% trans "Categories" %}</h3>
-  {% get_categories %}
+  <h3>{% templatetag openblock %} trans "Categories" {% templatetag closeblock %}</h3>
+  {% templatetag openblock %} get_categories {% templatetag closeblock %}
 </aside>
 <aside id="widget-authors" class="widget">
-  <h3>{% trans "Authors" %}</h3>
-  {% get_authors %}
+  <h3>{% templatetag openblock %} trans "Authors" {% templatetag closeblock %}</h3>
+  {% templatetag openblock %} get_authors {% templatetag closeblock %}
 </aside>
 <aside id="widget-recents" class="widget">
-  <h3>{% trans "Recent entries" %}</h3>
-  {% get_recent_entries %}
+  <h3>{% templatetag openblock %} trans "Recent entries" {% templatetag closeblock %}</h3>
+  {% templatetag openblock %} get_recent_entries {% templatetag closeblock %}
 </aside>
 <aside id="widget-comments" class="widget">
-  <h3>{% trans "Recent comments" %}</h3>
-  {% get_recent_comments %}
+  <h3>{% templatetag openblock %} trans "Recent comments" {% templatetag closeblock %}</h3>
+  {% templatetag openblock %} get_recent_comments {% templatetag closeblock %}
 </aside>
 <aside id="widget-linkbacks" class="widget">
-  <h3>{% trans "Recent linkbacks" %}</h3>
-  {% get_recent_linkbacks %}
+  <h3>{% templatetag openblock %} trans "Recent linkbacks" {% templatetag closeblock %}</h3>
+  {% templatetag openblock %} get_recent_linkbacks {% templatetag closeblock %}
 </aside>
 <aside id="widget-randoms" class="widget">
-  <h3>{% trans "Random entries" %}</h3>
-  {% get_random_entries %}
+  <h3>{% templatetag openblock %} trans "Random entries" {% templatetag closeblock %}</h3>
+  {% templatetag openblock %} get_random_entries {% templatetag closeblock %}
 </aside>
 <aside id="widget-populars" class="widget">
-  <h3>{% trans "Popular entries" %}</h3>
-  {% get_popular_entries %}
+  <h3>{% templatetag openblock %} trans "Popular entries" {% templatetag closeblock %}</h3>
+  {% templatetag openblock %} get_popular_entries {% templatetag closeblock %}
 </aside>
-{% if user.is_authenticated %}
+{% templatetag openblock %} if user.is_authenticated {% templatetag closeblock %}
 <aside id="widget-tools" class="widget">
-  <h3>{% trans "Tools" %}</h3>
+  <h3>{% templatetag openblock %} trans "Tools" {% templatetag closeblock %}</h3>
   <ul class="nav nav-tabs nav-stacked">
-    {% if perms.zinnia %}
+    {% templatetag openblock %} if perms.zinnia {% templatetag closeblock %}
     <li>
-      <a href="{% url 'admin:app_list' 'zinnia' %}" title="{% trans "Dashboard" %}">
+      <a href="{% templatetag openblock %} url 'admin:app_list' 'zinnia' {% templatetag closeblock %}" title="{% templatetag openblock %} trans "Dashboard" {% templatetag closeblock %}">
         <i class="glyphicon glyphicon-book"></i>
-        {% trans "Dashboard" %}
+        {% templatetag openblock %} trans "Dashboard" {% templatetag closeblock %}
       </a>
     </li>
-    {% endif %}
-    {% if perms.zinnia.add_entry %}
+    {% templatetag openblock %} endif {% templatetag closeblock %}
+    {% templatetag openblock %} if perms.zinnia.add_entry {% templatetag closeblock %}
     <li>
-      <a href="{% url 'admin:zinnia_entry_add' %}" title="{% trans "Post an entry" %}">
+      <a href="{% templatetag openblock %} url 'admin:zinnia_entry_add' {% templatetag closeblock %}" title="{% templatetag openblock %} trans "Post an entry" {% templatetag closeblock %}">
         <i class="glyphicon glyphicon-pencil"></i>
-        {% trans "Post an entry" %}
+        {% templatetag openblock %} trans "Post an entry" {% templatetag closeblock %}
       </a>
     </li>
-    {% endif %}
-    {% block admin_tools %}
-    {% endblock %}
+    {% templatetag openblock %} endif {% templatetag closeblock %}
+    {% templatetag openblock %} block admin_tools {% templatetag closeblock %}
+    {% templatetag openblock %} endblock {% templatetag closeblock %}
     <li>
-      <a href="{% url 'admin:logout' %}" title="{% trans "Log out" %}">
+      <a href="{% templatetag openblock %} url 'admin:logout' {% templatetag closeblock %}" title="{% templatetag openblock %} trans "Log out" {% templatetag closeblock %}">
         <i class="glyphicon glyphicon-off"></i>
-        {% trans "Log out" %}
+        {% templatetag openblock %} trans "Log out" {% templatetag closeblock %}
       </a>
     </li>
   </ul>
 </aside>
-{% endif %}
-{% endblock %}
+{% templatetag openblock %} endif {% templatetag closeblock %}
+{% templatetag openblock %} endblock {% templatetag closeblock %}

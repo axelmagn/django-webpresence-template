@@ -1,140 +1,140 @@
-{% load comments i18n %}
-{% load url from future %}
-<article id="entry-{{ object.pk }}" class="hentry{% if object.featured %} featured{% endif %}">
-  {% block entry-header %}
+{% templatetag openblock %} load comments i18n {% templatetag closeblock %}
+{% templatetag openblock %} load url from future {% templatetag closeblock %}
+<article id="entry-{{ object.pk }}" class="hentry{% templatetag openblock %} if object.featured {% templatetag closeblock %} featured{% templatetag openblock %} endif {% templatetag closeblock %}">
+  {% templatetag openblock %} block entry-header {% templatetag closeblock %}
   <header class="entry-header">
-    {% block entry-title %}
+    {% templatetag openblock %} block entry-title {% templatetag closeblock %}
     <h2 class="entry-title">
       <a href="{{ object.get_absolute_url }}" title="{{ object.title }}" rel="bookmark">
         {{ object.title }}
       </a>
     </h2>
-    {% endblock %}
-    {% block entry-info %}
+    {% templatetag openblock %} endblock {% templatetag closeblock %}
+    {% templatetag openblock %} block entry-info {% templatetag closeblock %}
     <p class="entry-info">
-      {% with authors=object.authors.all %}
-      {% if authors|length %}
-      {% trans "Written by" %}
-      {% for author in authors %}
+      {% templatetag openblock %} with authors=object.authors.all {% templatetag closeblock %}
+      {% templatetag openblock %} if authors|length {% templatetag closeblock %}
+      {% templatetag openblock %} trans "Written by" {% templatetag closeblock %}
+      {% templatetag openblock %} for author in authors {% templatetag closeblock %}
       <span class="vcard author">
-        <a href="{{ author.get_absolute_url }}" class="fn url{% if not author.get_full_name %} nickname{% endif %}" rel="author"
-           title="{% blocktrans %}Show all {{ author }}'s entries{% endblocktrans %}">{{ author }}</a></span>{% if not forloop.last %}, {% endif %}
-      {% endfor %}
-      {% trans "on" %}
-      {% else %}
-      {% trans "Written on" %}
-      {% endif %}
-      {% endwith %}
+        <a href="{{ author.get_absolute_url }}" class="fn url{% templatetag openblock %} if not author.get_full_name {% templatetag closeblock %} nickname{% templatetag openblock %} endif {% templatetag closeblock %}" rel="author"
+           title="{% templatetag openblock %} blocktrans {% templatetag closeblock %}Show all {{ author }}'s entries{% templatetag openblock %} endblocktrans {% templatetag closeblock %}">{{ author }}</a></span>{% templatetag openblock %} if not forloop.last {% templatetag closeblock %}, {% templatetag openblock %} endif {% templatetag closeblock %}
+      {% templatetag openblock %} endfor {% templatetag closeblock %}
+      {% templatetag openblock %} trans "on" {% templatetag closeblock %}
+      {% templatetag openblock %} else {% templatetag closeblock %}
+      {% templatetag openblock %} trans "Written on" {% templatetag closeblock %}
+      {% templatetag openblock %} endif {% templatetag closeblock %}
+      {% templatetag openblock %} endwith {% templatetag closeblock %}
       <time datetime="{{ object.creation_date|date:"c" }}" pubdate="pubdate">{{ object.creation_date|date:"DATE_FORMAT" }}</time>
-      {% with categories=object.categories.all %}
-      {% if categories|length %}
-      {% trans "in" %}
-      {% for category in categories %}
+      {% templatetag openblock %} with categories=object.categories.all {% templatetag closeblock %}
+      {% templatetag openblock %} if categories|length {% templatetag closeblock %}
+      {% templatetag openblock %} trans "in" {% templatetag closeblock %}
+      {% templatetag openblock %} for category in categories {% templatetag closeblock %}
       <a href="{{ category.get_absolute_url }}"
-         title="{% blocktrans %}Show all entries in {{ category }}{% endblocktrans %}"
-         rel="tag category">{{ category }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}{% endif %}.{% endwith %}
+         title="{% templatetag openblock %} blocktrans {% templatetag closeblock %}Show all entries in {{ category }}{% templatetag openblock %} endblocktrans {% templatetag closeblock %}"
+         rel="tag category">{{ category }}</a>{% templatetag openblock %} if not forloop.last {% templatetag closeblock %}, {% templatetag openblock %} endif {% templatetag closeblock %}{% templatetag openblock %} endfor {% templatetag closeblock %}{% templatetag openblock %} endif {% templatetag closeblock %}.{% templatetag openblock %} endwith {% templatetag closeblock %}
     </p>
-    {% endblock %}
+    {% templatetag openblock %} endblock {% templatetag closeblock %}
   </header>
-  {% endblock %}
+  {% templatetag openblock %} endblock {% templatetag closeblock %}
 
-  {% block entry-body %}
+  {% templatetag openblock %} block entry-body {% templatetag closeblock %}
   <div class="entry-body">
-    {% block entry-image %}
-    {% if object.image %}
+    {% templatetag openblock %} block entry-image {% templatetag closeblock %}
+    {% templatetag openblock %} if object.image {% templatetag closeblock %}
     <div class="entry-image">
       <p>
-        {% if continue_reading %}
+        {% templatetag openblock %} if continue_reading {% templatetag closeblock %}
         <a href="{{ object.get_absolute_url }}" title="{{ object.title }}" rel="bookmark">
-          {% endif %}
+          {% templatetag openblock %} endif {% templatetag closeblock %}
           <img src="{{ object.image.url }}" alt="{{ object.title }}" class="thumbnail pull-left" style="margin-right: 15px;" />
-          {% if continue_reading %}
+          {% templatetag openblock %} if continue_reading {% templatetag closeblock %}
         </a>
-        {% endif %}
+        {% templatetag openblock %} endif {% templatetag closeblock %}
       </p>
     </div>
-    {% endif %}
-    {% endblock %}
-    {% block entry-content %}
+    {% templatetag openblock %} endif {% templatetag closeblock %}
+    {% templatetag openblock %} endblock {% templatetag closeblock %}
+    {% templatetag openblock %} block entry-content {% templatetag closeblock %}
     <div class="entry-content">
       {{ object_content }}
     </div>
-    {% endblock %}
-    {% block continue-reading %}
-    {% if continue_reading %}
+    {% templatetag openblock %} endblock {% templatetag closeblock %}
+    {% templatetag openblock %} block continue-reading {% templatetag closeblock %}
+    {% templatetag openblock %} if continue_reading {% templatetag closeblock %}
     <p class="continue-reading">
       <a href="{{ object.get_absolute_url }}"
-         title="{% blocktrans with object=object.title %}Continue reading {{ object }}{% endblocktrans %}"
+         title="{% templatetag openblock %} blocktrans with object=object.title {% templatetag closeblock %}Continue reading {{ object }}{% templatetag openblock %} endblocktrans {% templatetag closeblock %}"
          rel="bookmark" class="btn btn-primary">
-        {% trans "Continue reading" %}
+        {% templatetag openblock %} trans "Continue reading" {% templatetag closeblock %}
       </a>
     </p>
-    {% endif %}
-    {% endblock %}
+    {% templatetag openblock %} endif {% templatetag closeblock %}
+    {% templatetag openblock %} endblock {% templatetag closeblock %}
   </div>
-  {% endblock %}
+  {% templatetag openblock %} endblock {% templatetag closeblock %}
 
-  {% block entry-footer %}
+  {% templatetag openblock %} block entry-footer {% templatetag closeblock %}
   <footer class="entry-footer well">
-    {% block entry-tags %}
+    {% templatetag openblock %} block entry-tags {% templatetag closeblock %}
     <p class="entry-tags">
-      <i class="glyphicon glyphicon-tags"></i> <strong>{% trans "Tags" %}</strong> :
-      {% for tag in object.tags_list %}
-      <a href="{% url 'zinnia_tag_detail' tag %}"
-         title="{% blocktrans %}Show all entries tagged by {{ tag }}{% endblocktrans %}"
+      <i class="glyphicon glyphicon-tags"></i> <strong>{% templatetag openblock %} trans "Tags" {% templatetag closeblock %}</strong> :
+      {% templatetag openblock %} for tag in object.tags_list {% templatetag closeblock %}
+      <a href="{% templatetag openblock %} url 'zinnia_tag_detail' tag {% templatetag closeblock %}"
+         title="{% templatetag openblock %} blocktrans {% templatetag closeblock %}Show all entries tagged by {{ tag }}{% templatetag openblock %} endblocktrans {% templatetag closeblock %}"
          rel="tag">{{ tag }}</a>
-      {% empty %}
-      <span>{% trans "No tags" %}</span>
-      {% endfor %}
+      {% templatetag openblock %} empty {% templatetag closeblock %}
+      <span>{% templatetag openblock %} trans "No tags" {% templatetag closeblock %}</span>
+      {% templatetag openblock %} endfor {% templatetag closeblock %}
     </p>
-    {% endblock %}
-    {% block entry-shorturl %}
+    {% templatetag openblock %} endblock {% templatetag closeblock %}
+    {% templatetag openblock %} block entry-shorturl {% templatetag closeblock %}
     <p class="entry-shorturl">
-      <i class="glyphicon glyphicon-bookmark"></i> <strong>{% trans "Short url" %}</strong> :
+      <i class="glyphicon glyphicon-bookmark"></i> <strong>{% templatetag openblock %} trans "Short url" {% templatetag closeblock %}</strong> :
       <a href="{{ object.short_url }}"
-         title="{% blocktrans with object=object.title %}Short URL to {{ object }}{% endblocktrans %}"
+         title="{% templatetag openblock %} blocktrans with object=object.title {% templatetag closeblock %}Short URL to {{ object }}{% templatetag openblock %} endblocktrans {% templatetag closeblock %}"
          rel="shortlink">
         {{ object.short_url }}
       </a>
     </p>
-    {% endblock %}
-    {% block entry-comments %}
+    {% templatetag openblock %} endblock {% templatetag closeblock %}
+    {% templatetag openblock %} block entry-comments {% templatetag closeblock %}
     <p class="entry-comments">
-      <i class="glyphicon glyphicon-comment"></i> <strong>{% trans "Discussions" %}</strong> :
-      {% with comment_count=object.comment_count %}
-      {% if comment_count %}
+      <i class="glyphicon glyphicon-comment"></i> <strong>{% templatetag openblock %} trans "Discussions" {% templatetag closeblock %}</strong> :
+      {% templatetag openblock %} with comment_count=object.comment_count {% templatetag closeblock %}
+      {% templatetag openblock %} if comment_count {% templatetag closeblock %}
       <a href="{{ object.get_absolute_url }}#comments"
-         title="{% blocktrans with object=object.title %}Comments on {{ object }}{% endblocktrans %}">
-        {% blocktrans count comment_count=comment_count %}{{ comment_count }} comment{% plural %}{{ comment_count }} comments{% endblocktrans %}
+         title="{% templatetag openblock %} blocktrans with object=object.title {% templatetag closeblock %}Comments on {{ object }}{% templatetag openblock %} endblocktrans {% templatetag closeblock %}">
+        {% templatetag openblock %} blocktrans count comment_count=comment_count {% templatetag closeblock %}{{ comment_count }} comment{% templatetag openblock %} plural {% templatetag closeblock %}{{ comment_count }} comments{% templatetag openblock %} endblocktrans {% templatetag closeblock %}
       </a>
-      {% else %}
-      {% if object.comments_are_open %}
-      {% trans "No comments yet." %}
+      {% templatetag openblock %} else {% templatetag closeblock %}
+      {% templatetag openblock %} if object.comments_are_open {% templatetag closeblock %}
+      {% templatetag openblock %} trans "No comments yet." {% templatetag closeblock %}
       <a href="{{ object.get_absolute_url }}#comment-form"
-         title="{% blocktrans with object=object.title %}Leave a comment on {{ object }}{% endblocktrans %}">
-        {% trans "Be first to comment!" %}
+         title="{% templatetag openblock %} blocktrans with object=object.title {% templatetag closeblock %}Leave a comment on {{ object }}{% templatetag openblock %} endblocktrans {% templatetag closeblock %}">
+        {% templatetag openblock %} trans "Be first to comment!" {% templatetag closeblock %}
       </a>
-      {% else %}
-      {% trans "Comments are closed." %}
-      {% endif %}
-      {% endif %}
-      {% endwith %}
-      {% with pingback_count=object.pingback_count %}
-      {% if pingback_count %}
-      , <a href="{{ object.get_absolute_url }}#pingbacks" title="{% blocktrans with object=object.title %}Pingbacks on {{ object }}{% endblocktrans %}">
-        {% blocktrans count pingback_count=pingback_count %}{{ pingback_count }} pingback{% plural %}{{ pingback_count }} pingbacks{% endblocktrans %}
+      {% templatetag openblock %} else {% templatetag closeblock %}
+      {% templatetag openblock %} trans "Comments are closed." {% templatetag closeblock %}
+      {% templatetag openblock %} endif {% templatetag closeblock %}
+      {% templatetag openblock %} endif {% templatetag closeblock %}
+      {% templatetag openblock %} endwith {% templatetag closeblock %}
+      {% templatetag openblock %} with pingback_count=object.pingback_count {% templatetag closeblock %}
+      {% templatetag openblock %} if pingback_count {% templatetag closeblock %}
+      , <a href="{{ object.get_absolute_url }}#pingbacks" title="{% templatetag openblock %} blocktrans with object=object.title {% templatetag closeblock %}Pingbacks on {{ object }}{% templatetag openblock %} endblocktrans {% templatetag closeblock %}">
+        {% templatetag openblock %} blocktrans count pingback_count=pingback_count {% templatetag closeblock %}{{ pingback_count }} pingback{% templatetag openblock %} plural {% templatetag closeblock %}{{ pingback_count }} pingbacks{% templatetag openblock %} endblocktrans {% templatetag closeblock %}
       </a>
-      {% endif %}
-      {% endwith %}
-      {% with trackback_count=object.trackback_count %}
-      {% if trackback_count %}
-      , <a href="{{ object.get_absolute_url }}#trackbacks" title="{% blocktrans with object=object.title %}Trackbacks on {{ object }}{% endblocktrans %}">
-        {% blocktrans count trackback_count=trackback_count %}{{ trackback_count }} trackback{% plural %}{{ trackback_count }} trackbacks{% endblocktrans %}
+      {% templatetag openblock %} endif {% templatetag closeblock %}
+      {% templatetag openblock %} endwith {% templatetag closeblock %}
+      {% templatetag openblock %} with trackback_count=object.trackback_count {% templatetag closeblock %}
+      {% templatetag openblock %} if trackback_count {% templatetag closeblock %}
+      , <a href="{{ object.get_absolute_url }}#trackbacks" title="{% templatetag openblock %} blocktrans with object=object.title {% templatetag closeblock %}Trackbacks on {{ object }}{% templatetag openblock %} endblocktrans {% templatetag closeblock %}">
+        {% templatetag openblock %} blocktrans count trackback_count=trackback_count {% templatetag closeblock %}{{ trackback_count }} trackback{% templatetag openblock %} plural {% templatetag closeblock %}{{ trackback_count }} trackbacks{% templatetag openblock %} endblocktrans {% templatetag closeblock %}
       </a>
-      {% endif %}
-      {% endwith %}
+      {% templatetag openblock %} endif {% templatetag closeblock %}
+      {% templatetag openblock %} endwith {% templatetag closeblock %}
     </p>
-    {% endblock %}
+    {% templatetag openblock %} endblock {% templatetag closeblock %}
   </footer>
-  {% endblock %}
+  {% templatetag openblock %} endblock {% templatetag closeblock %}
 </article>

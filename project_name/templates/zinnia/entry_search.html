@@ -1,52 +1,52 @@
-{% extends "zinnia/entry_list.html" %}
-{% load i18n zinnia_tags %}
-{% load url from future %}
+{% templatetag openblock %} extends "zinnia/entry_list.html" {% templatetag closeblock %}
+{% templatetag openblock %} load i18n zinnia_tags {% templatetag closeblock %}
+{% templatetag openblock %} load url from future {% templatetag closeblock %}
 
-{% block title %}{% trans "Search results for" %} {% if pattern %}'{{ pattern }}'{% endif %}{% if page_obj %}{% ifnotequal page_obj.number 1 %} | {% trans "Page" %} {{ page_obj.number }}{% endifnotequal %}{% endif %}{% endblock %}
+{% templatetag openblock %} block title {% templatetag closeblock %}{% templatetag openblock %} trans "Search results for" {% templatetag closeblock %} {% templatetag openblock %} if pattern {% templatetag closeblock %}'{{ pattern }}'{% templatetag openblock %} endif {% templatetag closeblock %}{% templatetag openblock %} if page_obj {% templatetag closeblock %}{% templatetag openblock %} ifnotequal page_obj.number 1 {% templatetag closeblock %} | {% templatetag openblock %} trans "Page" {% templatetag closeblock %} {{ page_obj.number }}{% templatetag openblock %} endifnotequal {% templatetag closeblock %}{% templatetag openblock %} endif {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% block meta-description %}{% trans "Search results for" %} {% if pattern %}'{{ pattern }}'{% endif %}{% if page_obj %}{% ifnotequal page_obj.number 1 %} {% trans "page" %} {{ page_obj.number }}{% endifnotequal %}{% endif %}{% endblock %}
+{% templatetag openblock %} block meta-description {% templatetag closeblock %}{% templatetag openblock %} trans "Search results for" {% templatetag closeblock %} {% templatetag openblock %} if pattern {% templatetag closeblock %}'{{ pattern }}'{% templatetag openblock %} endif {% templatetag closeblock %}{% templatetag openblock %} if page_obj {% templatetag closeblock %}{% templatetag openblock %} ifnotequal page_obj.number 1 {% templatetag closeblock %} {% templatetag openblock %} trans "page" {% templatetag closeblock %} {{ page_obj.number }}{% templatetag openblock %} endifnotequal {% templatetag closeblock %}{% templatetag openblock %} endif {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% block link %}
+{% templatetag openblock %} block link {% templatetag closeblock %}
   {{ block.super }}
-  <link rel="alternate" type="application/rss+xml" title="{% trans "RSS Feed of search result of" %} '{{ pattern }}'" href="{% url 'zinnia_entry_search_feed' %}?pattern={{ pattern }}" />
-{% endblock %}
+  <link rel="alternate" type="application/rss+xml" title="{% templatetag openblock %} trans "RSS Feed of search result of" {% templatetag closeblock %} '{{ pattern }}'" href="{% templatetag openblock %} url 'zinnia_entry_search_feed' {% templatetag closeblock %}?pattern={{ pattern }}" />
+{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% block body-class %}{{ block.super }} search {% if object_list %}search-results{% else %}search-no-results{% endif %}{% endblock %}
+{% templatetag openblock %} block body-class {% templatetag closeblock %}{{ block.super }} search {% templatetag openblock %} if object_list {% templatetag closeblock %}search-results{% templatetag openblock %} else {% templatetag closeblock %}search-no-results{% templatetag openblock %} endif {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% block content-title %}
-<h1>{% trans "Search results for" %} '{{ pattern }}'</h1>
+{% templatetag openblock %} block content-title {% templatetag closeblock %}
+<h1>{% templatetag openblock %} trans "Search results for" {% templatetag closeblock %} '{{ pattern }}'</h1>
 
-{% if error %}
+{% templatetag openblock %} if error {% templatetag closeblock %}
 <p class="alert alert-error">{{ error }}</p>
-{% endif %}
+{% templatetag openblock %} endif {% templatetag closeblock %}
 
-{% if object_list %}
+{% templatetag openblock %} if object_list {% templatetag closeblock %}
 <p class="alert alert-success">
-  {% blocktrans count entry_count=paginator.count %}{{ entry_count }} entry found{% plural %}{{ entry_count }} entries found{% endblocktrans %}
+  {% templatetag openblock %} blocktrans count entry_count=paginator.count {% templatetag closeblock %}{{ entry_count }} entry found{% templatetag openblock %} plural {% templatetag closeblock %}{{ entry_count }} entries found{% templatetag openblock %} endblocktrans {% templatetag closeblock %}
 </p>
-{% endif %}
-{% endblock %}
+{% templatetag openblock %} endif {% templatetag closeblock %}
+{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% block content-loop %}
-{% if not error %}
-{% for object in object_list %}
-  {% include object.content_template with object_content=object.html_content|truncatewords_html:100|safe continue_reading=1 %}
-{% empty %}
-<p class="alert alert-info">{% trans "Nothing found." %}</p>
-{% endfor %}
-{% endif %}
-{% endblock %}
+{% templatetag openblock %} block content-loop {% templatetag closeblock %}
+{% templatetag openblock %} if not error {% templatetag closeblock %}
+{% templatetag openblock %} for object in object_list {% templatetag closeblock %}
+  {% templatetag openblock %} include object.content_template with object_content=object.html_content|truncatewords_html:100|safe continue_reading=1 {% templatetag closeblock %}
+{% templatetag openblock %} empty {% templatetag closeblock %}
+<p class="alert alert-info">{% templatetag openblock %} trans "Nothing found." {% templatetag closeblock %}</p>
+{% templatetag openblock %} endfor {% templatetag closeblock %}
+{% templatetag openblock %} endif {% templatetag closeblock %}
+{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% block content-related %}
+{% templatetag openblock %} block content-related {% templatetag closeblock %}
 <div class="search">
-  <form method="get" id="main_searchform" action="{% url 'zinnia_entry_search' %}" class="well form-search">
+  <form method="get" id="main_searchform" action="{% templatetag openblock %} url 'zinnia_entry_search' {% templatetag closeblock %}" class="well form-search">
     <p>
       <input type="text" value="{{ pattern }}" name="pattern" id="main_searchbox" class="search-query input-xlarge" />
       <input type="submit" value="OK" class="btn"/>
-      <a title="{% trans 'You can use - to exclude words or phrases, &quot;double quotes&quot; for exact phrases and the AND/OR boolean operators combined with parenthesis for complex searchs.' %}">
+      <a title="{% templatetag openblock %} trans 'You can use - to exclude words or phrases, &quot;double quotes&quot; for exact phrases and the AND/OR boolean operators combined with parenthesis for complex searchs.' {% templatetag closeblock %}">
         <i class="glyphicon glyphicon-info-sign"></i>
       </a>
     </p>
   </form>
 </div>
-{% endblock %}
+{% templatetag openblock %} endblock {% templatetag closeblock %}
