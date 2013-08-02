@@ -7,12 +7,12 @@
     <legend>{% templatetag openblock %} trans "Post your comment" {% templatetag closeblock %}</legend>
     <input type="hidden" name="next" value="{% templatetag openblock %} url 'zinnia_comment_success' {% templatetag closeblock %}"/>
     {% templatetag openblock %} for field in form {% templatetag closeblock %}
-    {% templatetag openblock %} if field.is_hidden {% templatetag closeblock %}{{ field }}{% templatetag openblock %} else {% templatetag closeblock %}
+    {% templatetag openblock %} if field.is_hidden {% templatetag closeblock %}{% templatetag openvariable %} field {% templatetag closevariable %}{% templatetag openblock %} else {% templatetag closeblock %}
     {% templatetag openblock %} if user.is_authenticated and field.name in "namemailurl" {% templatetag closeblock %}{% templatetag openblock %} else {% templatetag closeblock %}
     <div{% templatetag openblock %} if field.errors {% templatetag closeblock %} class="alert alert-error"{% templatetag openblock %} endif {% templatetag closeblock %}{% templatetag openblock %} ifequal field.name "honeypot" {% templatetag closeblock %} style="display:none;"{% templatetag openblock %} endifequal {% templatetag closeblock %}>
-      {{ field.label_tag }}
-      {% templatetag openblock %} if field.errors {% templatetag closeblock %}{{ field.errors }}{% templatetag openblock %} endif {% templatetag closeblock %}
-      {{ field }}
+      {% templatetag openvariable %} field.label_tag {% templatetag closevariable %}
+      {% templatetag openblock %} if field.errors {% templatetag closeblock %}{% templatetag openvariable %} field.errors {% templatetag closevariable %}{% templatetag openblock %} endif {% templatetag closeblock %}
+      {% templatetag openvariable %} field {% templatetag closevariable %}
     </div>
     {% templatetag openblock %} endif {% templatetag closeblock %}
     {% templatetag openblock %} endif {% templatetag closeblock %}

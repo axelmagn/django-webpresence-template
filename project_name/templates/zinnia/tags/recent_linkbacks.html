@@ -3,9 +3,9 @@
   {% templatetag openblock %} for linkback in linkbacks {% templatetag closeblock %}
   <li>
     {% templatetag openblock %} with entry=linkback.content_object {% templatetag closeblock %}
-    <a href="{{ entry.get_absolute_url }}#c{{ linkback.pk }}"
-       title="{% templatetag openblock %} trans "Linkback on" {% templatetag closeblock %} {{ entry.title }}">
-      {{ linkback.user_name }} {% templatetag openblock %} trans "in" {% templatetag closeblock %} {{ entry.title }}
+    <a href="{% templatetag openvariable %} entry.get_absolute_url }}#c{{ linkback.pk {% templatetag closevariable %}"
+       title="{% templatetag openblock %} trans "Linkback on" {% templatetag closeblock %} {% templatetag openvariable %} entry.title {% templatetag closevariable %}">
+      {% templatetag openvariable %} linkback.user_name }} {% templatetag openblock %} trans "in" {% templatetag closeblock %} {{ entry.title {% templatetag closevariable %}
     </a>
     {% templatetag openblock %} endwith {% templatetag closeblock %}
   </li>

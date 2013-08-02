@@ -2,35 +2,35 @@
 {% templatetag openblock %} load i18n comments zinnia_tags {% templatetag closeblock %}
 {% templatetag openblock %} load url from future {% templatetag closeblock %}
 
-{% templatetag openblock %} block title {% templatetag closeblock %}{{ object.title }}{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% templatetag openblock %} block title {% templatetag closeblock %}{% templatetag openvariable %} object.title {% templatetag closevariable %}{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% templatetag openblock %} block meta-description {% templatetag closeblock %}{% templatetag openblock %} if object.excerpt {% templatetag closeblock %}{{ object.excerpt|striptags }}{% templatetag openblock %} else {% templatetag closeblock %}{{ object.content|striptags|truncatewords:100 }}{% templatetag openblock %} endif {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% templatetag openblock %} block meta-description {% templatetag closeblock %}{% templatetag openblock %} if object.excerpt {% templatetag closeblock %}{% templatetag openvariable %} object.excerpt|striptags }}{% templatetag openblock %} else {% templatetag closeblock %}{{ object.content|striptags|truncatewords:100 {% templatetag closevariable %}{% templatetag openblock %} endif {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% templatetag openblock %} block meta-keywords {% templatetag closeblock %}{% templatetag openblock %} if object.tags {% templatetag closeblock %}{{ object.tags }}{% templatetag openblock %} else {% templatetag closeblock %}{{ block.super }}{% templatetag openblock %} endif {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% templatetag openblock %} block meta-keywords {% templatetag closeblock %}{% templatetag openblock %} if object.tags {% templatetag closeblock %}{% templatetag openvariable %} object.tags }}{% templatetag openblock %} else {% templatetag closeblock %}{{ block.super {% templatetag closevariable %}{% templatetag openblock %} endif {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
 
 {% templatetag openblock %} block link {% templatetag closeblock %}
-  {{ block.super }}
+  {% templatetag openvariable %} block.super {% templatetag closevariable %}
   {% templatetag openblock %} with previous_entry=object.previous_entry {% templatetag closeblock %}{% templatetag openblock %} if previous_entry {% templatetag closeblock %}
-  <link rel="prev" title="{{ previous_entry.title }}" href="{{ previous_entry.get_absolute_url }}" />
+  <link rel="prev" title="{% templatetag openvariable %} previous_entry.title }}" href="{{ previous_entry.get_absolute_url {% templatetag closevariable %}" />
   {% templatetag openblock %} endif {% templatetag closeblock %}{% templatetag openblock %} endwith {% templatetag closeblock %}
   {% templatetag openblock %} with next_entry=object.next_entry {% templatetag closeblock %}{% templatetag openblock %} if next_entry {% templatetag closeblock %}
-  <link rel="next" title="{{ next_entry.title }}" href="{{ next_entry.get_absolute_url }}" />
+  <link rel="next" title="{% templatetag openvariable %} next_entry.title }}" href="{{ next_entry.get_absolute_url {% templatetag closevariable %}" />
   {% templatetag openblock %} endif {% templatetag closeblock %}{% templatetag openblock %} endwith {% templatetag closeblock %}
-  <link rel="shortlink" href="{{ object.short_url }}" />
-  <link rel="canonical" href="{{ object.get_absolute_url }}" />
+  <link rel="shortlink" href="{% templatetag openvariable %} object.short_url {% templatetag closevariable %}" />
+  <link rel="canonical" href="{% templatetag openvariable %} object.get_absolute_url {% templatetag closevariable %}" />
   {% templatetag openblock %} with year=object.creation_date|date:"Y" month=object.creation_date|date:"m" day=object.creation_date|date:"d" {% templatetag closeblock %}
-  <link rel="alternate" type="application/rss+xml" title="{% templatetag openblock %} trans "RSS Feed of discussions on" {% templatetag closeblock %} '{{ object.title }}'"
+  <link rel="alternate" type="application/rss+xml" title="{% templatetag openblock %} trans "RSS Feed of discussions on" {% templatetag closeblock %} '{% templatetag openvariable %} object.title {% templatetag closevariable %}'"
         href="{% templatetag openblock %} url 'zinnia_entry_discussion_feed' year month day object.slug {% templatetag closeblock %}" />
-  <link rel="alternate" type="application/rss+xml" title="{% templatetag openblock %} trans "RSS Feed of comments on" {% templatetag closeblock %} '{{ object.title }}'"
+  <link rel="alternate" type="application/rss+xml" title="{% templatetag openblock %} trans "RSS Feed of comments on" {% templatetag closeblock %} '{% templatetag openvariable %} object.title {% templatetag closevariable %}'"
         href="{% templatetag openblock %} url 'zinnia_entry_comment_feed' year month day object.slug {% templatetag closeblock %}" />
-  <link rel="alternate" type="application/rss+xml" title="{% templatetag openblock %} trans "RSS Feed of pingbacks on" {% templatetag closeblock %} '{{ object.title }}'"
+  <link rel="alternate" type="application/rss+xml" title="{% templatetag openblock %} trans "RSS Feed of pingbacks on" {% templatetag closeblock %} '{% templatetag openvariable %} object.title {% templatetag closevariable %}'"
         href="{% templatetag openblock %} url 'zinnia_entry_pingback_feed' year month day object.slug {% templatetag closeblock %}" />
-  <link rel="alternate" type="application/rss+xml" title="{% templatetag openblock %} trans "RSS Feed of trackbacks on" {% templatetag closeblock %} '{{ object.title }}'"
+  <link rel="alternate" type="application/rss+xml" title="{% templatetag openblock %} trans "RSS Feed of trackbacks on" {% templatetag closeblock %} '{% templatetag openvariable %} object.title {% templatetag closevariable %}'"
         href="{% templatetag openblock %} url 'zinnia_entry_trackback_feed' year month day object.slug {% templatetag closeblock %}" />
   {% templatetag openblock %} endwith {% templatetag closeblock %}
 {% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% templatetag openblock %} block body-class {% templatetag closeblock %}entry entry-{{ object.pk }}{% templatetag openblock %} if object.featured {% templatetag closeblock %} featured{% templatetag openblock %} endif {% templatetag closeblock %} year-{{ object.creation_date|date:"Y" }} month-{{ object.creation_date|date:"m" }} week-{{ object.creation_date|date:"W" }} day-{{ object.creation_date|date:"d" }}{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% templatetag openblock %} block body-class {% templatetag closeblock %}entry entry-{% templatetag openvariable %} object.pk }}{% templatetag openblock %} if object.featured {% templatetag closeblock %} featured{% templatetag openblock %} endif {% templatetag closeblock %} year-{{ object.creation_date|date:"Y" }} month-{{ object.creation_date|date:"m" }} week-{{ object.creation_date|date:"W" }} day-{{ object.creation_date|date:"d" {% templatetag closevariable %}{% templatetag openblock %} endblock {% templatetag closeblock %}
 
 {% templatetag openblock %} block content {% templatetag closeblock %}
 
@@ -47,7 +47,7 @@
     <ul>
       {% templatetag openblock %} for entry in entry_related {% templatetag closeblock %}
       <li>
-	<a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">{{ entry.title }}</a>
+	<a href="{% templatetag openvariable %} entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">{{ entry.title {% templatetag closevariable %}</a>
       </li>
       {% templatetag openblock %} endfor {% templatetag closeblock %}
     </ul>
@@ -63,8 +63,8 @@
       {% templatetag openblock %} with next_entry=object.next_entry {% templatetag closeblock %}
       {% templatetag openblock %} if next_entry {% templatetag closeblock %}
       <li class="next">
-        <a href="{{ next_entry.get_absolute_url }}" title="{{ next_entry.title }}" rel="next">
-          {{ next_entry.title }} &rarr;
+        <a href="{% templatetag openvariable %} next_entry.get_absolute_url }}" title="{{ next_entry.title {% templatetag closevariable %}" rel="next">
+          {% templatetag openvariable %} next_entry.title {% templatetag closevariable %} &rarr;
         </a>
       </li>
       {% templatetag openblock %} endif {% templatetag closeblock %}
@@ -72,8 +72,8 @@
       {% templatetag openblock %} with previous_entry=object.previous_entry {% templatetag closeblock %}
       {% templatetag openblock %} if previous_entry {% templatetag closeblock %}
       <li class="previous">
-        <a href="{{ previous_entry.get_absolute_url }}" title="{{ previous_entry.title }}" rel="prev">
-          &larr; {{ previous_entry.title }}
+        <a href="{% templatetag openvariable %} previous_entry.get_absolute_url }}" title="{{ previous_entry.title {% templatetag closevariable %}" rel="prev">
+          &larr; {% templatetag openvariable %} previous_entry.title {% templatetag closevariable %}
         </a>
       </li>
       {% templatetag openblock %} endif {% templatetag closeblock %}
@@ -90,26 +90,26 @@
   {% templatetag openblock %} with comment_list=object.comments {% templatetag closeblock %}
   <ol id="comment-list">
     {% templatetag openblock %} for comment in comment_list {% templatetag closeblock %}
-    <li id="comment-{{ comment.pk }}-by-{{ comment.user_name|slugify }}"
+    <li id="comment-{% templatetag openvariable %} comment.pk }}-by-{{ comment.user_name|slugify {% templatetag closevariable %}"
         class="comment vcard {% templatetag openblock %} cycle box1,box2 {% templatetag closeblock %}{% templatetag openblock %} if comment.user {% templatetag closeblock %} authenticated-comment{% templatetag openblock %} if comment.user.is_staff {% templatetag closeblock %} staff-comment{% templatetag openblock %} endif {% templatetag closeblock %}{% templatetag openblock %} if comment.user.is_superuser {% templatetag closeblock %} superuser-comment{% templatetag openblock %} endif {% templatetag closeblock %}{% templatetag openblock %} endif {% templatetag closeblock %}">
       <img src="{% templatetag openblock %} get_gravatar comment.email 60 "G" {% templatetag closeblock %}"
-           class="gravatar photo" alt="{{ comment.name }}" />
+           class="gravatar photo" alt="{% templatetag openvariable %} comment.name {% templatetag closevariable %}" />
       <p class="comment-info">
 	{% templatetag openblock %} if comment.url {% templatetag closeblock %}
-	<a href="{{ comment.url }}" rel="external nofollow"
-           class="fn url">{{ comment.name }}</a>
+	<a href="{% templatetag openvariable %} comment.url {% templatetag closevariable %}" rel="external nofollow"
+           class="fn url">{% templatetag openvariable %} comment.name {% templatetag closevariable %}</a>
 	{% templatetag openblock %} else {% templatetag closeblock %}
-	<span class="fn">{{ comment.name }}</span>
+	<span class="fn">{% templatetag openvariable %} comment.name {% templatetag closevariable %}</span>
 	{% templatetag openblock %} endif {% templatetag closeblock %}
 	{% templatetag openblock %} trans "on" {% templatetag closeblock %}
-        <abbr class="comment-published" title="{{ comment.submit_date|date:"c" }}">
-          {{ comment.submit_date|date:"SHORT_DATETIME_FORMAT" }}
+        <abbr class="comment-published" title="{% templatetag openvariable %} comment.submit_date|date:"c" {% templatetag closevariable %}">
+          {% templatetag openvariable %} comment.submit_date|date:"SHORT_DATETIME_FORMAT" {% templatetag closevariable %}
         </abbr>
-        <a href="#comment-{{ comment.pk }}-by-{{ comment.user_name|slugify }}"
-           id="c{{ comment.pk }}" class="anchor-link"
+        <a href="#comment-{% templatetag openvariable %} comment.pk }}-by-{{ comment.user_name|slugify {% templatetag closevariable %}"
+           id="c{% templatetag openvariable %} comment.pk {% templatetag closevariable %}" class="anchor-link"
            title="{% templatetag openblock %} trans "Direct link to this comment" {% templatetag closeblock %}">#</a>
       </p>
-      {{ comment.comment|linebreaks }}
+      {% templatetag openvariable %} comment.comment|linebreaks {% templatetag closevariable %}
     </li>
     {% templatetag openblock %} endfor {% templatetag closeblock %}
   </ol>
@@ -134,20 +134,20 @@
   {% templatetag openblock %} with pingback_list=object.pingbacks {% templatetag closeblock %}
   <ol id="pingback-list">
     {% templatetag openblock %} for pingback in pingback_list {% templatetag closeblock %}
-    <li id="pingback-{{ pingback.pk }}" class="pingback vcard {% templatetag openblock %} cycle box1,box2 {% templatetag closeblock %}">
+    <li id="pingback-{% templatetag openvariable %} pingback.pk {% templatetag closevariable %}" class="pingback vcard {% templatetag openblock %} cycle box1,box2 {% templatetag closeblock %}">
       <p class="pingback-info">
-	<a href="{{ pingback.url }}" rel="external nofollow"
-           class="fn url org">{{ pingback.name }}</a>
+	<a href="{% templatetag openvariable %} pingback.url {% templatetag closevariable %}" rel="external nofollow"
+           class="fn url org">{% templatetag openvariable %} pingback.name {% templatetag closevariable %}</a>
 	{% templatetag openblock %} trans "on" {% templatetag closeblock %}
-        <abbr class="pingback-published" title="{{ pingback.submit_date|date:"c" }}">
-          {{ pingback.submit_date|date:"SHORT_DATETIME_FORMAT" }}
+        <abbr class="pingback-published" title="{% templatetag openvariable %} pingback.submit_date|date:"c" {% templatetag closevariable %}">
+          {% templatetag openvariable %} pingback.submit_date|date:"SHORT_DATETIME_FORMAT" {% templatetag closevariable %}
         </abbr>
-        <a href="#pingback-{{ pingback.pk }}"
-           id="c{{ pingback.pk }}" class="anchor-link"
+        <a href="#pingback-{% templatetag openvariable %} pingback.pk {% templatetag closevariable %}"
+           id="c{% templatetag openvariable %} pingback.pk {% templatetag closevariable %}" class="anchor-link"
            title="{% templatetag openblock %} trans "Direct link to this pingback" {% templatetag closeblock %}">#</a>
       </p>
       <p class="pingback-content">
-	{{ pingback.comment }}
+	{% templatetag openvariable %} pingback.comment {% templatetag closevariable %}
       </p>
     </li>
     {% templatetag openblock %} endfor {% templatetag closeblock %}
@@ -170,20 +170,20 @@
   {% templatetag openblock %} with trackback_list=object.trackbacks {% templatetag closeblock %}
   <ol id="trackback-list">
     {% templatetag openblock %} for trackback in trackback_list {% templatetag closeblock %}
-    <li id="trackback-{{ trackback.pk }}" class="trackback vcard {% templatetag openblock %} cycle box1,box2 {% templatetag closeblock %}">
+    <li id="trackback-{% templatetag openvariable %} trackback.pk {% templatetag closevariable %}" class="trackback vcard {% templatetag openblock %} cycle box1,box2 {% templatetag closeblock %}">
       <p class="trackback-info">
-	<a href="{{ trackback.url }}" rel="external nofollow"
-           class="fn url org">{{ trackback.name }}</a>
+	<a href="{% templatetag openvariable %} trackback.url {% templatetag closevariable %}" rel="external nofollow"
+           class="fn url org">{% templatetag openvariable %} trackback.name {% templatetag closevariable %}</a>
 	{% templatetag openblock %} trans "on" {% templatetag closeblock %}
-        <abbr class="trackback-published" title="{{ trackback.submit_date|date:"c" }}">
-          {{ trackback.submit_date|date:"SHORT_DATETIME_FORMAT" }}
+        <abbr class="trackback-published" title="{% templatetag openvariable %} trackback.submit_date|date:"c" {% templatetag closevariable %}">
+          {% templatetag openvariable %} trackback.submit_date|date:"SHORT_DATETIME_FORMAT" {% templatetag closevariable %}
         </abbr>
-        <a href="#trackback-{{ trackback.pk }}"
-           id="c{{ trackback.pk }}" class="anchor-link"
+        <a href="#trackback-{% templatetag openvariable %} trackback.pk {% templatetag closevariable %}"
+           id="c{% templatetag openvariable %} trackback.pk {% templatetag closevariable %}" class="anchor-link"
            title="{% templatetag openblock %} trans "Direct link to this trackback" {% templatetag closeblock %}">#</a>
       </p>
       <p class="trackback-content">
-	{{ trackback.comment }}
+	{% templatetag openvariable %} trackback.comment {% templatetag closevariable %}
       </p>
     </li>
     {% templatetag openblock %} endfor {% templatetag closeblock %}

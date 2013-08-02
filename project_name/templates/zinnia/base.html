@@ -2,10 +2,10 @@
 {% templatetag openblock %} load zinnia_tags i18n {% templatetag closeblock %}
 {% templatetag openblock %} load url from future {% templatetag closeblock %}
 
-{% templatetag openblock %} block meta-keywords {% templatetag closeblock %}{% templatetag openblock %} get_tags as entry_tags {% templatetag closeblock %}{{ entry_tags|join:", "}}{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% templatetag openblock %} block meta-keywords {% templatetag closeblock %}{% templatetag openblock %} get_tags as entry_tags {% templatetag closeblock %}{% templatetag openvariable %} entry_tags|join:", "{% templatetag closevariable %}{% templatetag openblock %} endblock {% templatetag closeblock %}
 
 {% templatetag openblock %} block meta {% templatetag closeblock %}
-    <meta name="generator" content="Zinnia {{ ZINNIA_VERSION }}" />
+    <meta name="generator" content="Zinnia {% templatetag openvariable %} ZINNIA_VERSION {% templatetag closevariable %}" />
 {% templatetag openblock %} endblock {% templatetag closeblock %}
 
 {% templatetag openblock %} block link {% templatetag closeblock %}

@@ -2,11 +2,11 @@
 <ul class="nav nav-tabs nav-stacked">
   {% templatetag openblock %} for author in authors {% templatetag closeblock %}
   <li class="vcard{% templatetag openblock %} if author.username == context_author.username {% templatetag closeblock %} current{% templatetag openblock %} endif {% templatetag closeblock %}>">
-    <a href="{{ author.get_absolute_url }}"
-       title="{% templatetag openblock %} blocktrans {% templatetag closeblock %}Show all {{ author }}'s entries{% templatetag openblock %} endblocktrans {% templatetag closeblock %}"
-       class="fn nickname url">{{ author }}
+    <a href="{% templatetag openvariable %} author.get_absolute_url {% templatetag closevariable %}"
+       title="{% templatetag openblock %} blocktrans {% templatetag closeblock %}Show all {% templatetag openvariable %} author {% templatetag closevariable %}'s entries{% templatetag openblock %} endblocktrans {% templatetag closeblock %}"
+       class="fn nickname url">{% templatetag openvariable %} author {% templatetag closevariable %}
       <span class="label label-info">
-        {% templatetag openblock %} blocktrans count entry_count=author.count_entries_published {% templatetag closeblock %}{{ entry_count }} entry{% templatetag openblock %} plural {% templatetag closeblock %}{{ entry_count }} entries{% templatetag openblock %} endblocktrans {% templatetag closeblock %}
+        {% templatetag openblock %} blocktrans count entry_count=author.count_entries_published {% templatetag closeblock %}{% templatetag openvariable %} entry_count }} entry{% templatetag openblock %} plural {% templatetag closeblock %}{{ entry_count {% templatetag closevariable %} entries{% templatetag openblock %} endblocktrans {% templatetag closeblock %}
       </span>
     </a>
   </li>

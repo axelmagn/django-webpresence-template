@@ -2,10 +2,10 @@
 <ul class="category-root nav nav-tabs nav-stacked">
   {% templatetag openblock %} for category in categories {% templatetag closeblock %}
   <li{% templatetag openblock %} if category.slug == context_category.slug {% templatetag closeblock %} class="current"{% templatetag openblock %} endif {% templatetag closeblock %}>
-    <a href="{{ category.get_absolute_url }}"
-       title="{% templatetag openblock %} blocktrans {% templatetag closeblock %}Show all entries in {{ category }}{% templatetag openblock %} endblocktrans {% templatetag closeblock %}">{{ category }}
+    <a href="{% templatetag openvariable %} category.get_absolute_url {% templatetag closevariable %}"
+       title="{% templatetag openblock %} blocktrans {% templatetag closeblock %}Show all entries in {% templatetag openvariable %} category }}{% templatetag openblock %} endblocktrans {% templatetag closeblock %}">{{ category {% templatetag closevariable %}
       <span class="label label-info">
-        {% templatetag openblock %} blocktrans count entry_count=category.count_entries_published {% templatetag closeblock %}{{ entry_count }} entry{% templatetag openblock %} plural {% templatetag closeblock %}{{ entry_count }} entries{% templatetag openblock %} endblocktrans {% templatetag closeblock %}
+        {% templatetag openblock %} blocktrans count entry_count=category.count_entries_published {% templatetag closeblock %}{% templatetag openvariable %} entry_count }} entry{% templatetag openblock %} plural {% templatetag closeblock %}{{ entry_count {% templatetag closevariable %} entries{% templatetag openblock %} endblocktrans {% templatetag closeblock %}
       </span>
     </a>
   </li>

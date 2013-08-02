@@ -2,7 +2,7 @@
 <ul class="nav nav-tabs nav-stacked">
   {% templatetag openblock %} for entry in entries {% templatetag closeblock %}
   <li>
-    <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">{{ entry.title }}</a>
+    <a href="{% templatetag openvariable %} entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">{{ entry.title {% templatetag closevariable %}</a>
   </li>
   {% templatetag openblock %} empty {% templatetag closeblock %}
   <li>

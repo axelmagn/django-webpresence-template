@@ -3,10 +3,10 @@
   {% templatetag openblock %} for comment in comments {% templatetag closeblock %}
   <li>
     {% templatetag openblock %} with entry=comment.content_object {% templatetag closeblock %}
-    <a href="{{ entry.get_absolute_url }}#comment-{{ comment.pk }}-by-{{ comment.user_name }}"
-       title="{% templatetag openblock %} trans "Comment on" {% templatetag closeblock %} {{ entry.title }}">
-      {{ comment.user_name }} {% templatetag openblock %} trans "in" {% templatetag closeblock %}
-      {{ entry.title }}
+    <a href="{% templatetag openvariable %} entry.get_absolute_url }}#comment-{{ comment.pk }}-by-{{ comment.user_name {% templatetag closevariable %}"
+       title="{% templatetag openblock %} trans "Comment on" {% templatetag closeblock %} {% templatetag openvariable %} entry.title {% templatetag closevariable %}">
+      {% templatetag openvariable %} comment.user_name {% templatetag closevariable %} {% templatetag openblock %} trans "in" {% templatetag closeblock %}
+      {% templatetag openvariable %} entry.title {% templatetag closevariable %}
     </a>
     {% templatetag openblock %} endwith {% templatetag closeblock %}
   </li>

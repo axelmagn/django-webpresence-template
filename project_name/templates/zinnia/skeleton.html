@@ -25,32 +25,32 @@
       <ul class="nav navbar-nav pull-left">
         {% templatetag openblock %} url 'zinnia_category_list' as category_list_url {% templatetag closeblock %}
         <li {% templatetag openblock %} if category_list_url in request.path {% templatetag closeblock %}class="active"{% templatetag openblock %} endif {% templatetag closeblock %}>
-          <a href="{{ category_list_url }}" title="{% templatetag openblock %} trans "Category list" {% templatetag closeblock %}">
+          <a href="{% templatetag openvariable %} category_list_url {% templatetag closevariable %}" title="{% templatetag openblock %} trans "Category list" {% templatetag closeblock %}">
             {% templatetag openblock %} trans "Categories" {% templatetag closeblock %}
           </a>
         </li>
         {% templatetag openblock %} url 'zinnia_author_list' as author_list_url {% templatetag closeblock %}
         <li {% templatetag openblock %} if author_list_url in request.path {% templatetag closeblock %}class="active"{% templatetag openblock %} endif {% templatetag closeblock %}>
-          <a href="{{ author_list_url }}" title="{% templatetag openblock %} trans "Author list" {% templatetag closeblock %}">
+          <a href="{% templatetag openvariable %} author_list_url {% templatetag closevariable %}" title="{% templatetag openblock %} trans "Author list" {% templatetag closeblock %}">
             {% templatetag openblock %} trans "Authors" {% templatetag closeblock %}
           </a>
         </li>
         {% templatetag openblock %} url 'zinnia_tag_list' as tag_list_url {% templatetag closeblock %}
         <li {% templatetag openblock %} if tag_list_url in request.path {% templatetag closeblock %}class="active"{% templatetag openblock %} endif {% templatetag closeblock %}>
-          <a href="{{ tag_list_url }}" title="{% templatetag openblock %} trans "Tag list" {% templatetag closeblock %}">
+          <a href="{% templatetag openvariable %} tag_list_url {% templatetag closevariable %}" title="{% templatetag openblock %} trans "Tag list" {% templatetag closeblock %}">
             {% templatetag openblock %} trans "Tags" {% templatetag closeblock %}
           </a>
         </li>
         <li class="divider"></li>
       </ul>
       <form method="get" action="{% templatetag openblock %} url 'zinnia_entry_search' {% templatetag closeblock %}" class="navbar-form pull-left">
-        <input type="text" class="form-control" placeholder="{% templatetag openblock %} trans 'Search' {% templatetag closeblock %}" name="pattern" value="{{ pattern }}" />
+        <input type="text" class="form-control" placeholder="{% templatetag openblock %} trans 'Search' {% templatetag closeblock %}" name="pattern" value="{% templatetag openvariable %} pattern {% templatetag closevariable %}" />
       </form>
       <ul class="nav navbar-nav pull-right">
         {% templatetag openblock %} url 'zinnia_sitemap' as sitemap_url {% templatetag closeblock %}
         <li {% templatetag openblock %} if sitemap in request.path {% templatetag closeblock %}class="active"{% templatetag openblock %} endif {% templatetag closeblock %}>
         <li>
-          <a href="{{ sitemap_url }}" title="{% templatetag openblock %} trans "Sitemap" {% templatetag closeblock %}" class="sitemap">
+          <a href="{% templatetag openvariable %} sitemap_url {% templatetag closevariable %}" title="{% templatetag openblock %} trans "Sitemap" {% templatetag closeblock %}" class="sitemap">
             {% templatetag openblock %} trans "Sitemap" {% templatetag closeblock %}
           </a>
         </li>
@@ -113,7 +113,7 @@
 </div>
 {% templatetag openblock %} endblock {% templatetag closeblock %}
     <footer class="container">
-      <p>Powered by <a href="http://www.djangoproject.com">Django</a> and <a href="https://github.com/Fantomas42/django-blog-zinnia">Zinnia {{ ZINNIA_VERSION }}</a>.</p>
+      <p>Powered by <a href="http://www.djangoproject.com">Django</a> and <a href="https://github.com/Fantomas42/django-blog-zinnia">Zinnia {% templatetag openvariable %} ZINNIA_VERSION {% templatetag closevariable %}</a>.</p>
     </footer>
   </body>
 </html>
