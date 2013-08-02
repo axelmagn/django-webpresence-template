@@ -1,30 +1,30 @@
-{% load comments i18n crispy_forms_field %}
-{% load url from future %}
+{% templatetag openblock %} load comments i18n crispy_forms_field {% templatetag closeblock %}
+{% templatetag openblock %} load url from future {% templatetag closeblock %}
 
-<form action="{% comment_form_target %}" method="post" id="comment-form" class="well">
-  {% csrf_token %}
+<form action="{% templatetag openblock %} comment_form_target {% templatetag closeblock %}" method="post" id="comment-form" class="well">
+  {% templatetag openblock %} csrf_token {% templatetag closeblock %}
   <fieldset>
-    <legend>{% trans "Post your comment" %}</legend>
-    <input type="hidden" name="next" value="{% url 'zinnia_comment_success' %}"/>
-    {% for field in form %}
-    {% if field.is_hidden %}{{ field }}{% else %}
-    {% if user.is_authenticated and field.name in "namemailurl" %}{% else %}
-    <div{% if field.errors %} class="alert alert-error"{% endif %}{% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+    <legend>{% templatetag openblock %} trans "Post your comment" {% templatetag closeblock %}</legend>
+    <input type="hidden" name="next" value="{% templatetag openblock %} url 'zinnia_comment_success' {% templatetag closeblock %}"/>
+    {% templatetag openblock %} for field in form {% templatetag closeblock %}
+    {% templatetag openblock %} if field.is_hidden {% templatetag closeblock %}{{ field }}{% templatetag openblock %} else {% templatetag closeblock %}
+    {% templatetag openblock %} if user.is_authenticated and field.name in "namemailurl" {% templatetag closeblock %}{% templatetag openblock %} else {% templatetag closeblock %}
+    <div{% templatetag openblock %} if field.errors {% templatetag closeblock %} class="alert alert-error"{% templatetag openblock %} endif {% templatetag closeblock %}{% templatetag openblock %} ifequal field.name "honeypot" {% templatetag closeblock %} style="display:none;"{% templatetag openblock %} endifequal {% templatetag closeblock %}>
       {{ field.label_tag }}
-      {% if field.errors %}{{ field.errors }}{% endif %}
+      {% templatetag openblock %} if field.errors {% templatetag closeblock %}{{ field.errors }}{% templatetag openblock %} endif {% templatetag closeblock %}
       {{ field }}
     </div>
-    {% endif %}
-    {% endif %}
-    {% endfor %}
-    {% if user.is_authenticated %}
+    {% templatetag openblock %} endif {% templatetag closeblock %}
+    {% templatetag openblock %} endif {% templatetag closeblock %}
+    {% templatetag openblock %} endfor {% templatetag closeblock %}
+    {% templatetag openblock %} if user.is_authenticated {% templatetag closeblock %}
     <p class="auth">
-      {% trans "Comment as" %} <strong>{% firstof user.get_full_name user.username %}</strong>. <a href="{% url 'admin:logout' %}">{% trans "Log out" %}</a>.
+      {% templatetag openblock %} trans "Comment as" {% templatetag closeblock %} <strong>{% templatetag openblock %} firstof user.get_full_name user.username {% templatetag closeblock %}</strong>. <a href="{% templatetag openblock %} url 'admin:logout' {% templatetag closeblock %}">{% templatetag openblock %} trans "Log out" {% templatetag closeblock %}</a>.
     </p>
-    {% endif %}
+    {% templatetag openblock %} endif {% templatetag closeblock %}
     <p class="submit">
-      <input type="submit" name="preview" class="submit-preview btn" value="{% trans "Preview" %}" />
-      <input type="submit" name="submit" class="submit-post btn btn-primary" value="{% trans "Post" %}" />
+      <input type="submit" name="preview" class="submit-preview btn" value="{% templatetag openblock %} trans "Preview" {% templatetag closeblock %}" />
+      <input type="submit" name="submit" class="submit-post btn btn-primary" value="{% templatetag openblock %} trans "Post" {% templatetag closeblock %}" />
     </p>
   </fieldset>
 </form>

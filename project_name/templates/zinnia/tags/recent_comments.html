@@ -1,18 +1,18 @@
-{% load i18n %}
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
 <ul class="nav nav-tabs nav-stacked">
-  {% for comment in comments %}
+  {% templatetag openblock %} for comment in comments {% templatetag closeblock %}
   <li>
-    {% with entry=comment.content_object %}
+    {% templatetag openblock %} with entry=comment.content_object {% templatetag closeblock %}
     <a href="{{ entry.get_absolute_url }}#comment-{{ comment.pk }}-by-{{ comment.user_name }}"
-       title="{% trans "Comment on" %} {{ entry.title }}">
-      {{ comment.user_name }} {% trans "in" %}
+       title="{% templatetag openblock %} trans "Comment on" {% templatetag closeblock %} {{ entry.title }}">
+      {{ comment.user_name }} {% templatetag openblock %} trans "in" {% templatetag closeblock %}
       {{ entry.title }}
     </a>
-    {% endwith %}
+    {% templatetag openblock %} endwith {% templatetag closeblock %}
   </li>
-  {% empty %}
+  {% templatetag openblock %} empty {% templatetag closeblock %}
   <li>
-    <a href="#">{% trans "No comments yet." %}</a>
+    <a href="#">{% templatetag openblock %} trans "No comments yet." {% templatetag closeblock %}</a>
   </li>
-  {% endfor %}
+  {% templatetag openblock %} endfor {% templatetag closeblock %}
 </ul>

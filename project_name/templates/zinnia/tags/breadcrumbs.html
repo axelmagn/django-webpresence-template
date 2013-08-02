@@ -1,11 +1,11 @@
 <ul class="breadcrumb">
-  {% for crumb in breadcrumbs %}
-  <li {% if forloop.last %}class="active"{% endif%}>
-    {% if crumb.url %}
-    <a href="{{ crumb.url }}" title="{{ crumb.name }}">{{ crumb.name }}</a>{% if not forloop.last %} <span class="divider">/</span>{% endif %}
-    {% else %}
+  {% templatetag openblock %} for crumb in breadcrumbs {% templatetag closeblock %}
+  <li {% templatetag openblock %} if forloop.last {% templatetag closeblock %}class="active"{% templatetag openblock %} endif{% templatetag closeblock %}>
+    {% templatetag openblock %} if crumb.url {% templatetag closeblock %}
+    <a href="{{ crumb.url }}" title="{{ crumb.name }}">{{ crumb.name }}</a>{% templatetag openblock %} if not forloop.last {% templatetag closeblock %} <span class="divider">/</span>{% templatetag openblock %} endif {% templatetag closeblock %}
+    {% templatetag openblock %} else {% templatetag closeblock %}
     {{ crumb.name }}
-    {% endif %}
+    {% templatetag openblock %} endif {% templatetag closeblock %}
   </li>
-  {% endfor %}
+  {% templatetag openblock %} endfor {% templatetag closeblock %}
 </ul>

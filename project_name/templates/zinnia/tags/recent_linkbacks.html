@@ -1,17 +1,17 @@
-{% load i18n %}
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
 <ul class="nav nav-tabs nav-stacked">
-  {% for linkback in linkbacks %}
+  {% templatetag openblock %} for linkback in linkbacks {% templatetag closeblock %}
   <li>
-    {% with entry=linkback.content_object %}
+    {% templatetag openblock %} with entry=linkback.content_object {% templatetag closeblock %}
     <a href="{{ entry.get_absolute_url }}#c{{ linkback.pk }}"
-       title="{% trans "Linkback on" %} {{ entry.title }}">
-      {{ linkback.user_name }} {% trans "in" %} {{ entry.title }}
+       title="{% templatetag openblock %} trans "Linkback on" {% templatetag closeblock %} {{ entry.title }}">
+      {{ linkback.user_name }} {% templatetag openblock %} trans "in" {% templatetag closeblock %} {{ entry.title }}
     </a>
-    {% endwith %}
+    {% templatetag openblock %} endwith {% templatetag closeblock %}
   </li>
-  {% empty %}
+  {% templatetag openblock %} empty {% templatetag closeblock %}
   <li>
-    <a href="#">{% trans "No linkbacks yet." %}</a>
+    <a href="#">{% templatetag openblock %} trans "No linkbacks yet." {% templatetag closeblock %}</a>
   </li>
-  {% endfor %}
+  {% templatetag openblock %} endfor {% templatetag closeblock %}
 </ul>

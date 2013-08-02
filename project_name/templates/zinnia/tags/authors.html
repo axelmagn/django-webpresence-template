@@ -1,18 +1,18 @@
-{% load i18n %}
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
 <ul class="nav nav-tabs nav-stacked">
-  {% for author in authors %}
-  <li class="vcard{% if author.username == context_author.username %} current{% endif %}>">
+  {% templatetag openblock %} for author in authors {% templatetag closeblock %}
+  <li class="vcard{% templatetag openblock %} if author.username == context_author.username {% templatetag closeblock %} current{% templatetag openblock %} endif {% templatetag closeblock %}>">
     <a href="{{ author.get_absolute_url }}"
-       title="{% blocktrans %}Show all {{ author }}'s entries{% endblocktrans %}"
+       title="{% templatetag openblock %} blocktrans {% templatetag closeblock %}Show all {{ author }}'s entries{% templatetag openblock %} endblocktrans {% templatetag closeblock %}"
        class="fn nickname url">{{ author }}
       <span class="label label-info">
-        {% blocktrans count entry_count=author.count_entries_published %}{{ entry_count }} entry{% plural %}{{ entry_count }} entries{% endblocktrans %}
+        {% templatetag openblock %} blocktrans count entry_count=author.count_entries_published {% templatetag closeblock %}{{ entry_count }} entry{% templatetag openblock %} plural {% templatetag closeblock %}{{ entry_count }} entries{% templatetag openblock %} endblocktrans {% templatetag closeblock %}
       </span>
     </a>
   </li>
-  {% empty %}
+  {% templatetag openblock %} empty {% templatetag closeblock %}
   <li>
-    {% trans "No authors yet." %}
+    {% templatetag openblock %} trans "No authors yet." {% templatetag closeblock %}
   </li>
-  {% endfor %}
+  {% templatetag openblock %} endfor {% templatetag closeblock %}
 </ul>

@@ -1,61 +1,61 @@
-{% load i18n %}
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
 <nav class="pagination pagination-centered">
   <ul>
-    {% if page.has_previous %}
+    {% templatetag openblock %} if page.has_previous {% templatetag closeblock %}
     <li class="page previous">
       <a href="?page={{ page.previous_page_number }}{{ GET_string }}"
-         title="{% trans "More recent entries" %}">&laquo;</a>
+         title="{% templatetag openblock %} trans "More recent entries" {% templatetag closeblock %}">&laquo;</a>
     </li>
-    {% endif %}
+    {% templatetag openblock %} endif {% templatetag closeblock %}
 
-    {% for page_number in begin %}
-    <li class="page {% ifequal page.number page_number %}active{% endifequal %}">
-      {% ifequal page.number page_number %}
+    {% templatetag openblock %} for page_number in begin {% templatetag closeblock %}
+    <li class="page {% templatetag openblock %} ifequal page.number page_number {% templatetag closeblock %}active{% templatetag openblock %} endifequal {% templatetag closeblock %}">
+      {% templatetag openblock %} ifequal page.number page_number {% templatetag closeblock %}
       <a href="#">{{ page_number }}</a>
-      {% else %}
+      {% templatetag openblock %} else {% templatetag closeblock %}
       <a href="?page={{ page_number }}{{ GET_string }}"
-         title="{% trans "Entries page" %} {{ page_number }}">{{ page_number }}</a>
-      {% endifequal%}
+         title="{% templatetag openblock %} trans "Entries page" {% templatetag closeblock %} {{ page_number }}">{{ page_number }}</a>
+      {% templatetag openblock %} endifequal{% templatetag closeblock %}
     </li>
-    {% endfor %}
+    {% templatetag openblock %} endfor {% templatetag closeblock %}
 
-    {% if middle %}
+    {% templatetag openblock %} if middle {% templatetag closeblock %}
     <li class="disabled">
       <a href="#">&hellip;</a>
     </li>
-    {% for page_number in middle %}
-    <li class="page {% ifequal page.number page_number %}active{% endifequal %}">
-      {% ifequal page.number page_number %}
+    {% templatetag openblock %} for page_number in middle {% templatetag closeblock %}
+    <li class="page {% templatetag openblock %} ifequal page.number page_number {% templatetag closeblock %}active{% templatetag openblock %} endifequal {% templatetag closeblock %}">
+      {% templatetag openblock %} ifequal page.number page_number {% templatetag closeblock %}
       <a href="#">{{ page_number }}</a>
-      {% else %}
+      {% templatetag openblock %} else {% templatetag closeblock %}
       <a href="?page={{ page_number }}{{ GET_string }}"
-         title="{% trans "Entries page" %} {{ page_number }}">{{ page_number }}</a>
-      {% endifequal%}
+         title="{% templatetag openblock %} trans "Entries page" {% templatetag closeblock %} {{ page_number }}">{{ page_number }}</a>
+      {% templatetag openblock %} endifequal{% templatetag closeblock %}
     </li>
-    {% endfor %}
-    {% endif %}
+    {% templatetag openblock %} endfor {% templatetag closeblock %}
+    {% templatetag openblock %} endif {% templatetag closeblock %}
 
-    {% if end %}
+    {% templatetag openblock %} if end {% templatetag closeblock %}
     <li class="disabled">
       <a href="#">&hellip;</a>
     </li>
-    {% for page_number in end %}
-    <li class="page {% ifequal page.number page_number %}active{% endifequal %}">
-      {% ifequal page.number page_number %}
+    {% templatetag openblock %} for page_number in end {% templatetag closeblock %}
+    <li class="page {% templatetag openblock %} ifequal page.number page_number {% templatetag closeblock %}active{% templatetag openblock %} endifequal {% templatetag closeblock %}">
+      {% templatetag openblock %} ifequal page.number page_number {% templatetag closeblock %}
       <a href="#">{{ page_number }}</a>
-      {% else %}
+      {% templatetag openblock %} else {% templatetag closeblock %}
       <a href="?page={{ page_number }}{{ GET_string }}"
-         title="{% trans "Entries page" %} {{ page_number }}">{{ page_number }}</a>
-      {% endifequal%}
+         title="{% templatetag openblock %} trans "Entries page" {% templatetag closeblock %} {{ page_number }}">{{ page_number }}</a>
+      {% templatetag openblock %} endifequal{% templatetag closeblock %}
     </li>
-    {% endfor %}
-    {% endif %}
+    {% templatetag openblock %} endfor {% templatetag closeblock %}
+    {% templatetag openblock %} endif {% templatetag closeblock %}
 
-    {% if page.has_next %}
+    {% templatetag openblock %} if page.has_next {% templatetag closeblock %}
     <li class="page next">
       <a href="?page={{ page.next_page_number }}{{ GET_string }}"
-         title="{% trans "More old entries" %}">&raquo;</a>
+         title="{% templatetag openblock %} trans "More old entries" {% templatetag closeblock %}">&raquo;</a>
     </li>
-    {% endif %}
+    {% templatetag openblock %} endif {% templatetag closeblock %}
   </ul>
 </nav>

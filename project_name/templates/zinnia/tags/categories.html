@@ -1,17 +1,17 @@
-{% load i18n %}
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
 <ul class="category-root nav nav-tabs nav-stacked">
-  {% for category in categories %}
-  <li{% if category.slug == context_category.slug %} class="current"{% endif %}>
+  {% templatetag openblock %} for category in categories {% templatetag closeblock %}
+  <li{% templatetag openblock %} if category.slug == context_category.slug {% templatetag closeblock %} class="current"{% templatetag openblock %} endif {% templatetag closeblock %}>
     <a href="{{ category.get_absolute_url }}"
-       title="{% blocktrans %}Show all entries in {{ category }}{% endblocktrans %}">{{ category }}
+       title="{% templatetag openblock %} blocktrans {% templatetag closeblock %}Show all entries in {{ category }}{% templatetag openblock %} endblocktrans {% templatetag closeblock %}">{{ category }}
       <span class="label label-info">
-        {% blocktrans count entry_count=category.count_entries_published %}{{ entry_count }} entry{% plural %}{{ entry_count }} entries{% endblocktrans %}
+        {% templatetag openblock %} blocktrans count entry_count=category.count_entries_published {% templatetag closeblock %}{{ entry_count }} entry{% templatetag openblock %} plural {% templatetag closeblock %}{{ entry_count }} entries{% templatetag openblock %} endblocktrans {% templatetag closeblock %}
       </span>
     </a>
   </li>
-  {% empty %}
+  {% templatetag openblock %} empty {% templatetag closeblock %}
   <li>
-    <a href="#">{% trans "No categories yet." %}</a>
+    <a href="#">{% templatetag openblock %} trans "No categories yet." {% templatetag closeblock %}</a>
   </li>
-  {% endfor %}
+  {% templatetag openblock %} endfor {% templatetag closeblock %}
 </ul>

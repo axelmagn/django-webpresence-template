@@ -1,6 +1,6 @@
-{% load i18n %}
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
 <ul class="nav nav-tabs nav-stacked">
-  {% for entry in entries %}
+  {% templatetag openblock %} for entry in entries {% templatetag closeblock %}
   <li>
     <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">{{ entry.title }}
       <span class="badge badge-info">
@@ -8,9 +8,9 @@
       </span>
     </a>
   </li>
-  {% empty %}
+  {% templatetag openblock %} empty {% templatetag closeblock %}
   <li>
-    <a href="#">{% trans "No entries yet." %}</a>
+    <a href="#">{% templatetag openblock %} trans "No entries yet." {% templatetag closeblock %}</a>
   </li>
-  {% endfor %}
+  {% templatetag openblock %} endfor {% templatetag closeblock %}
 </ul>
