@@ -1,103 +1,103 @@
-{% templatetag openblock %} extends "base.html" {% templatetag closeblock %}
-{% templatetag openblock %} load staticfiles zinnia_tags i18n {% templatetag closeblock %}
+{% extends "base.html" %}
+{% load staticfiles zinnia_tags i18n %}
 
 
-{% templatetag openblock %} block head_meta {% templatetag closeblock %}
+{% block head_meta %}
     <meta charset="utf-8">
-    <title>{% templatetag openblock %} block title %}{% endblock {% templatetag closeblock %}</title>
-    <meta name="description" content="{% templatetag openblock %} block meta-description %}{% endblock {% templatetag closeblock %}" />
-    <meta name="keywords" content="{% templatetag openblock %} block meta-keywords %}blog{% endblock {% templatetag closeblock %}" />
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="{% block meta-description %}{% endblock %}" />
+    <meta name="keywords" content="{% block meta-keywords %}blog{% endblock %}" />
 
-    {% templatetag openblock %} block meta %}{% endblock {% templatetag closeblock %}
-    {% templatetag openblock %} block link %}{% endblock {% templatetag closeblock %}
-    {% templatetag openblock %} block script %}{% endblock {% templatetag closeblock %}
-{% templatetag openblock %} endblock {% templatetag closeblock %}
+    {% block meta %}{% endblock %}
+    {% block link %}{% endblock %}
+    {% block script %}{% endblock %}
+{% endblock %}
 
 
-{% templatetag openblock %} block header {% templatetag closeblock %}
-{% templatetag openblock %} block navbar {% templatetag closeblock %}
+{% block header %}
+{% block navbar %}
 <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <a href="{% templatetag openblock %} url 'zinnia_entry_archive_index' {% templatetag closeblock %}" title="{{ project_name }}" class="navbar-brand" rel="home">
+      <a href="{% url 'zinnia_entry_archive_index' %}" title="{{ project_name }}" class="navbar-brand" rel="home">
           {{ project_name }}
       </a>
       <ul class="nav navbar-nav pull-left">
-        {% templatetag openblock %} url 'zinnia_category_list' as category_list_url {% templatetag closeblock %}
-        <li {% templatetag openblock %} if category_list_url in request.path %}class="active"{% endif {% templatetag closeblock %}>
-          <a href="{{ category_list_url }}" title="{% templatetag openblock %} trans "Category list" {% templatetag closeblock %}">
-            {% templatetag openblock %} trans "Categories" {% templatetag closeblock %}
+        {% url 'zinnia_category_list' as category_list_url %}
+        <li {% if category_list_url in request.path %}class="active"{% endif %}>
+          <a href="{{ category_list_url }}" title="{% trans "Category list" %}">
+            {% trans "Categories" %}
           </a>
         </li>
-        {% templatetag openblock %} url 'zinnia_author_list' as author_list_url {% templatetag closeblock %}
-        <li {% templatetag openblock %} if author_list_url in request.path %}class="active"{% endif {% templatetag closeblock %}>
-          <a href="{{ author_list_url }}" title="{% templatetag openblock %} trans "Author list" {% templatetag closeblock %}">
-            {% templatetag openblock %} trans "Authors" {% templatetag closeblock %}
+        {% url 'zinnia_author_list' as author_list_url %}
+        <li {% if author_list_url in request.path %}class="active"{% endif %}>
+          <a href="{{ author_list_url }}" title="{% trans "Author list" %}">
+            {% trans "Authors" %}
           </a>
         </li>
-        {% templatetag openblock %} url 'zinnia_tag_list' as tag_list_url {% templatetag closeblock %}
-        <li {% templatetag openblock %} if tag_list_url in request.path %}class="active"{% endif {% templatetag closeblock %}>
-          <a href="{{ tag_list_url }}" title="{% templatetag openblock %} trans "Tag list" {% templatetag closeblock %}">
-            {% templatetag openblock %} trans "Tags" {% templatetag closeblock %}
+        {% url 'zinnia_tag_list' as tag_list_url %}
+        <li {% if tag_list_url in request.path %}class="active"{% endif %}>
+          <a href="{{ tag_list_url }}" title="{% trans "Tag list" %}">
+            {% trans "Tags" %}
           </a>
         </li>
         <li class="divider"></li>
       </ul>
-      <form method="get" action="{% templatetag openblock %} url 'zinnia_entry_search' {% templatetag closeblock %}" class="navbar-form pull-left">
-        <input type="text" class="form-control" placeholder="{% templatetag openblock %} trans 'Search' {% templatetag closeblock %}" name="pattern" value="{{ pattern }}" />
+      <form method="get" action="{% url 'zinnia_entry_search' %}" class="navbar-form pull-left">
+        <input type="text" class="form-control" placeholder="{% trans 'Search' %}" name="pattern" value="{{ pattern }}" />
       </form>
       <ul class="nav navbar-nav pull-right">
-        {% templatetag openblock %} url 'zinnia_sitemap' as sitemap_url {% templatetag closeblock %}
-        <li {% templatetag openblock %} if sitemap in request.path %}class="active"{% endif {% templatetag closeblock %}>
+        {% url 'zinnia_sitemap' as sitemap_url %}
+        <li {% if sitemap in request.path %}class="active"{% endif %}>
         <li>
-          <a href="{{ sitemap_url }}" title="{% templatetag openblock %} trans "Sitemap" {% templatetag closeblock %}" class="sitemap">
-            {% templatetag openblock %} trans "Sitemap" {% templatetag closeblock %}
+          <a href="{{ sitemap_url }}" title="{% trans "Sitemap" %}" class="sitemap">
+            {% trans "Sitemap" %}
           </a>
         </li>
         <li class="divider"></li>
         <li>
-          <a href="{% templatetag openblock %} url 'zinnia_entry_latest_feed' %}" title="{% trans "RSS Feed of latest entries" {% templatetag closeblock %}" class="feeds">
-            {% templatetag openblock %} trans "RSS Feed" {% templatetag closeblock %}
+          <a href="{% url 'zinnia_entry_latest_feed' %}" title="{% trans "RSS Feed of latest entries" %}" class="feeds">
+            {% trans "RSS Feed" %}
           </a>
         </li>
       </ul>
     </div>
   </div>
 </header>
-{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% endblock %}
 
 <div class="container">
-  {% templatetag openblock %} block breadcrumbs %}{% endblock {% templatetag closeblock %}
+  {% block breadcrumbs %}{% endblock %}
 </div>
-{% templatetag openblock %} block slider %}{% endblock {% templatetag closeblock %}
-{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% block slider %}{% endblock %}
+{% endblock %}
 
 
-{% templatetag openblock %} block base_content {% templatetag closeblock %}
+{% block base_content %}
 <div class="container">
   <div class="row">
     <div id="content" class="hfeed col-lg-8">
-      {% templatetag openblock %} block content {% templatetag closeblock %}
+      {% block content %}
       <div class="links">
-        <h3>{% templatetag openblock %} trans "Useful links" {% templatetag closeblock %}</h3>
+        <h3>{% trans "Useful links" %}</h3>
         <ul>
           <li>
-            <a href="{% templatetag openblock %} url 'zinnia_entry_archive_index' %}" title="{% trans "Blog index" {% templatetag closeblock %}">
-              {% templatetag openblock %} trans "Blog index" {% templatetag closeblock %}
+            <a href="{% url 'zinnia_entry_archive_index' %}" title="{% trans "Blog index" %}">
+              {% trans "Blog index" %}
             </a>
           </li>
           <li>
-            <a href="{% templatetag openblock %} url 'zinnia_sitemap' %}" title="{% trans "Sitemap" {% templatetag closeblock %}">
-              {% templatetag openblock %} trans "Sitemap" {% templatetag closeblock %}
+            <a href="{% url 'zinnia_sitemap' %}" title="{% trans "Sitemap" %}">
+              {% trans "Sitemap" %}
             </a>
           </li>
         </ul>
       </div>
       <div class="search">
-        <h3>{% templatetag openblock %} trans "Search" {% templatetag closeblock %}</h3>
-        {% templatetag openblock %} include "zinnia/tags/search_form.html" {% templatetag closeblock %}
+        <h3>{% trans "Search" %}</h3>
+        {% include "zinnia/tags/search_form.html" %}
       </div>
-      {% templatetag openblock %} endblock {% templatetag closeblock %}
+      {% endblock %}
     </div>
     <div id="sidebar" class="col-lg-4">
       <div id="widget-welcome" class="widget well">
@@ -106,12 +106,12 @@
           This simple skin is a base theme implementing Twitter's Bootstrap CSS toolkit.
         </p>
       </div>
-      {% templatetag openblock %} block sidebar {% templatetag closeblock %}
-      {% templatetag openblock %} endblock {% templatetag closeblock %}
+      {% block sidebar %}
+      {% endblock %}
     </div>
   </div>
 </div>
-{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% endblock %}
     <footer class="container">
       <p>Powered by <a href="http://www.djangoproject.com">Django</a> and <a href="https://github.com/Fantomas42/django-blog-zinnia">Zinnia {{ ZINNIA_VERSION }}</a>.</p>
     </footer>

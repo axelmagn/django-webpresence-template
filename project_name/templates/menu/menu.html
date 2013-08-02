@@ -1,11 +1,11 @@
-{% templatetag openblock %} load menu_tags {% templatetag closeblock %}
-{% templatetag openblock %} for child in children {% templatetag closeblock %}
-<li class="{% templatetag openblock %} if child.selected %}active{% endif %}{% if child.ancestor %}ancestor{% endif %}{% if child.sibling %}sibling{% endif %}{% if child.descendant %}descendant{% endif {% templatetag closeblock %}">
+{% load menu_tags %}
+{% for child in children %}
+<li class="{% if child.selected %}active{% endif %}{% if child.ancestor %}ancestor{% endif %}{% if child.sibling %}sibling{% endif %}{% if child.descendant %}descendant{% endif %}">
 	<a href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">{{ child.get_menu_title }}</a>
-	{% templatetag openblock %} if child.children {% templatetag closeblock %}
+	{% if child.children %}
     <ul>
-        {% templatetag openblock %} show_menu from_level to_level extra_inactive extra_active template "" "" child {% templatetag closeblock %}
+        {% show_menu from_level to_level extra_inactive extra_active template "" "" child %}
     </ul>
-    {% templatetag openblock %} endif {% templatetag closeblock %}
+    {% endif %}
 </li>
-{% templatetag openblock %} endfor {% templatetag closeblock %}
+{% endfor %}
