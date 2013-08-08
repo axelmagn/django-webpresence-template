@@ -67,7 +67,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">{{ project_name }}</a>
+                    <a class="navbar-brand" href="#">{% templatetag openvariable %} site.name {% templatetag closevariable %}</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav navbar-nav">
                             {% templatetag openblock %} show_menu {% templatetag closeblock %}

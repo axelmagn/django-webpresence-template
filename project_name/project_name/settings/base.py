@@ -150,6 +150,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'cms.context_processors.media',
     'sekizai.context_processors.sekizai',
     'zinnia.context_processors.version',
+    'context_extras.context_processors.current_site',
 )
 
 ROOT_URLCONF = '{{ project_name }}.urls'

@@ -7,6 +7,7 @@ South==0.8.1
 django-mptt-admin==0.1.3
 django-grappelli==2.4.5
 django-crispy-forms==1.3.2
+django-context-extras==0.2.4
 
 # CMS Requirements
 django-cms==2.4.2
