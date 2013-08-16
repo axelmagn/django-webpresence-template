@@ -215,7 +215,7 @@ THIRD_PARTY_APPS = (
 CMS_APPS = (
     'cms',
     'cms.plugins.text',
-    'cms.plugins.twitter',
+    # 'cms.plugins.twitter',
     'cms.plugins.picture',
     'cms.plugins.link',
     'cmsplugin_filer_file',

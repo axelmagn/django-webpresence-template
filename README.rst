@@ -18,9 +18,17 @@ Integrated CMS
 Packages
 ========
 
+These are some significant packages used.  For a full and current list, check 
+the requirements folder.
+
 ----
 Apps
 ----
+
+* South
+* Crispy Forms 
+* Django CMS
+* Zinnia
 
 ---------
 Libraries
@@ -29,14 +37,6 @@ Libraries
 -----
 Tools
 -----
-
-========================
-Best Practices Resources
-========================
-
-=====================
-Inspiration Templates
-=====================
 
 =====
 Setup
@@ -68,7 +68,22 @@ Creating a Project
 
 To get started, start a new project with this as a template.::
 
-    django-admin startproject --template=https://github.com/axelmagn/django-webpresence-template/archive/master.zip --extension=py,rst,html <project_name> <directory_path>
+    $ django-admin startproject --template=https://github.com/axelmagn/django-webpresence-template/archive/master.zip --extension=py,rst,html <project_name> <directory_path>
+
+-----------------------
+Installing Requirements
+-----------------------
+
+Install development packages.::
+
+    $ pip install -r requirements/dev.txt
+
+---------------------
+Configure Environment
+---------------------
+
+Configuration relies on setting a number of variables in the environment.  Refer 
+to the installation chapter in the docs.
 
 =====
 Usage

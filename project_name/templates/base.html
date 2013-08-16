@@ -100,9 +100,11 @@
         {% templatetag openblock %} block message_alerts {% templatetag closeblock %}
         {% templatetag openblock %} if messages {% templatetag closeblock %}
         {% templatetag openblock %} for message in messages {% templatetag closeblock %}
-        <div class="alert{% templatetag openblock %} if message.tags {% templatetag closeblock %}{% templatetag openvariable %} message.tags {% templatetag closevariable %}{% templatetag openblock %} endif {% templatetag closeblock %}">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          {% templatetag openvariable %} message {% templatetag closevariable %}
+        <div class="container">
+            <div class="alert{% templatetag openblock %} if message.tags {% templatetag closeblock %} {% templatetag openvariable %} message.tags {% templatetag closevariable %}{% templatetag openblock %} endif {% templatetag closeblock %}">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {% templatetag openvariable %} message {% templatetag closevariable %}
+            </div>
         </div>
         {% templatetag openblock %} endfor {% templatetag closeblock %}
         {% templatetag openblock %} endif {% templatetag closeblock %}
