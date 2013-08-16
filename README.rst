@@ -48,10 +48,10 @@ Working Environment
 
 create your project folder and set up a virtualenv directory. ::
 
-    $ mkdir <directory_path>
-    $ cd <directory_path>
-    $ virtualenv .venv
-    $ source .venv/bin/activate
+    mkdir <directory_path>
+    cd <directory_path>
+    virtualenv .venv
+    source .venv/bin/activate
 
 -----------------
 Installing Django
@@ -59,7 +59,7 @@ Installing Django
 
 Install django in your virtualenv.::
 
-    $ pip install django
+    pip install django
 
 
 ------------------
@@ -68,7 +68,7 @@ Creating a Project
 
 To get started, start a new project with this as a template.::
 
-    $ django-admin startproject --template=https://github.com/axelmagn/django-webpresence-template/archive/master.zip --extension=py,rst,html <project_name> <directory_path>
+    django-admin startproject --template=https://github.com/axelmagn/django-webpresence-template/archive/master.zip --extension=py,rst,html <project_name> <directory_path>
 
 -----------------------
 Installing Requirements
@@ -76,7 +76,7 @@ Installing Requirements
 
 Install development packages.::
 
-    $ pip install -r requirements/dev.txt
+    pip install -r requirements/dev.txt
 
 ---------------------
 Configure Environment
